@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('codeSemaine')->unique();
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');
-            $table->foreign('anneeFormation')->references('anneeFormation')->on('annee_formations')->onDelete('cascade');
+            $table->string('anneeformation',9);
+            $table->foreign('anneeformation')->references('anneeFormation')->on('annee_formations')->onDelete('cascade');
 
         });
     }

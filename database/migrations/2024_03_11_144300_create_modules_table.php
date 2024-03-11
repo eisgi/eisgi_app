@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
             $table->string('codeModule')->unique();
-            $table->string('libelleModule',100);
-            $table->number('ordreModule',3);
-            $table->decimal('MasseHoraireTotal',6,2);
+            $table->string('libelleModule', 100);
+            $table->unsignedMediumInteger('ordreModule');
+            $table->decimal('MasseHoraireTotal', 6, 2);
+            $table->string('filiereModule');
             $table->foreign('filiereModule')->references('codeFiliere')->on('filieres')->onDelete('cascade');
-            $table->foreign('semestreModule')->refrences('idSemestre')->on('semestres')->onDelete('cascade');
+            $table->string('semestreModule',2);
+            $table->foreign('semestreModule')->references('idSemestre')->on('semestres')->onDelete('cascade');
         });
     }
 

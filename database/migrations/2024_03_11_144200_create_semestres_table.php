@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('semestres', function (Blueprint $table) {
             $table->string('idSemestre',2)->primary();
             $table->date('dateDebutSemestre');
-            $tabme->date('dateFinSemestre');
+            $table->date('dateFinSemestre');
         });
     }
 

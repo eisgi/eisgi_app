@@ -3,7 +3,7 @@
 // LoginController.php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,35 +15,38 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->only('matricule', 'password');
+   public function login(Request $request)
+{
+    $matricule = $request->input('matricule');
+    $password = $request->input('password');
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $role = $user->role;
 
-            switch ($role) {
-                case 'ADM':
-                    return view('admin.adminHome');
-                    break;
+    $user = User::where('matricule', $matricule)->first();
 
-                case 'FORM':
-                    return view('formateurs.formateurHome');
-                    break;
+    if ($user && password_verify($password, $user->password)) {
+        $role = $user->role;
 
-                case 'STAG':
-                    return view('stagiaires.stagiaireHome');
-                    break;
+        switch ($role) {
+            case 'ADM':
+                return view('admin.adminHome');
+                break;
 
-                default:
-                    return redirect()->route('error.page');
-                    break;
-            }
+            case 'FORM':
+                return view('formateurs.formateurHome');
+                break;
+
+            case 'STAG':
+                return view('stagiaires.stagiaireHome');
+                break;
+
+            default:
+                return redirect()->route('error.page');
+                break;
         }
-
-        return redirect()->route('login')->with('error', 'Invalid matricule or password');
     }
+
+    return redirect()->route('login')->with('error', 'Invalid matricule or password');
+}
 
     public function logout()
     {

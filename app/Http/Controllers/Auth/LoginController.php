@@ -15,11 +15,12 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-   public function login(Request $request)
+   // LoginController.php
+
+public function login(Request $request)
 {
     $matricule = $request->input('matricule');
     $password = $request->input('password');
-
 
     $user = User::where('matricule', $matricule)->first();
 
@@ -45,8 +46,13 @@ class LoginController extends Controller
         }
     }
 
-    return redirect()->route('login')->with('error', 'Invalid matricule or password');
+    // Authentication failed, return to login with error message
+    return redirect()->route('login')->withErrors([
+        'error' => 'Invalid matricule or password',
+        'user' => $user, // Pass user data to the view
+    ]);
 }
+
 
     public function logout()
     {

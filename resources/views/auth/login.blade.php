@@ -38,7 +38,7 @@
         <div class="form">
             <img src="{{ asset('style/login/assets/img/authentication.svg') }}" alt="" class="form__img">
 
-            <form method="POST" action="{{ route('loginVerify') }}">
+            <form method="POST" action="{{ route('loginVerify') }}" class="form__content">
                 @csrf
                 <h1 class="form__title">Welcome</h1>
 

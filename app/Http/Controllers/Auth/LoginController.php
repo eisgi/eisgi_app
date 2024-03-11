@@ -23,8 +23,7 @@ public function login(Request $request)
     $password = $request->input('password');
 
     $user = User::where('matricule', $matricule)->first();
-
-    if ($user && password_verify($password, $user->password)) {
+    if ($user->matricule===$matricule && $user->password===$password) {
         $role = $user->role;
 
         switch ($role) {

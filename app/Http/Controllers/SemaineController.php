@@ -12,20 +12,36 @@ class SemaineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         //
     }
+    
+    public function create(Request $request)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'codeSemaine' => 'required',
+        'dateDebutSemaine' => 'required|date',
+        'dateFinSemaine' => 'required|date',
+        'anneeformation' => 'required|integer'
+    ]);
+
+    // Create a new Semaine record with the validated data
+    $semaine = Semaine::create($validatedData);
+
+    // Redirect the user to a specific route
+    return redirect()->route('route_name'); 
+}
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.

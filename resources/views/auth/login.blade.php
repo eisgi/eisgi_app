@@ -9,7 +9,7 @@
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="{{ asset('style/login/assets/css/styles.css') }}">
  
-
+    <!-- ===== BOX ICONS ===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Login</title>
@@ -22,17 +22,6 @@
         @if ($errors->any())
             <div class="alert alert-danger">
                 {{ $errors->first('error') }}
-            </div>
-        @endif
-
-        @if ($errors->has('user'))
-            <div class="alert alert-info">
-                User Information:
-                <ul>
-                    <li>Matricule: {{ $errors->first('user.matricule') }}</li>
-                    <li>Password: {{ $errors->first('user.password') }}</li>
-                    <!-- Add more user attributes as needed -->
-                </ul>
             </div>
         @endif
 

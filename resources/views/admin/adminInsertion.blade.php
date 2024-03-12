@@ -8,7 +8,7 @@
 </head>
 <body>
         {{-- formulaire ajout d'un semestre --}}
-        <form method="POST" action="{{route('ajoutSemestres')}}">
+        <form method="POST" action="{{route('admin.ajoutSemestres')}}">
             @csrf
             <label>idSemestre</label>
             <input type="text" name="idSemestre"/>
@@ -22,7 +22,7 @@
 
 
     {{-- formulaire ajout d'une filière --}}
-    <form method="POST" action="{{route('ajoutFilieres')}}">
+    <form method="POST" action="{{route('admin.ajoutFilieres')}}">
         @csrf
         <label>codeFiliere</label>
         <input type="text" name="codeFiliere"/>
@@ -31,7 +31,7 @@
     </form>
 
     {{-- formulaire ajout des formateurs --}}
-    <form method="POST" action="{{route('ajoutFormateurs')}}">
+    <form method="POST" action="{{route('admin.ajoutFormateurs')}}">
         @csrf
         <label>Nom</label>
         <input type="text" name="nom"/>
@@ -45,7 +45,7 @@
     </form>
 
     {{-- formulaire ajout des modules --}}
-    <form method="POST" action="{{route('ajoutModules')}}">
+    <form method="POST" action="{{route('admin.ajoutModules')}}">
         @csrf
         <label>codeModule</label>
         <input type="text" name="codeModule"/>
@@ -61,7 +61,7 @@
     </form>
 
     {{-- formulaire ajout des groupes --}}
-    <form method="POST" action="{{route('ajoutGroupes')}}">
+    <form method="POST" action="{{route('admin.ajoutGroupes')}}">
         @csrf
         <label>libelleGroupe</label>
         <input type="text" name="libelleGroupe"/>

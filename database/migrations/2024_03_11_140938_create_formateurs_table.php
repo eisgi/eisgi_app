@@ -18,10 +18,11 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->date('dateNaissaice');
+            $table->date('dateNaissance');
             $table->date('dateRejoint');
             $table->string('matricule', 8)->unique()->default(Str::random(8));
-            
+            $table->string('password', 12)->unique()->default(Str::random(12));
+
         });
     }
 

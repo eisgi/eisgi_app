@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('groupes', function (Blueprint $table) {
             $table->id();
-            $table->string('libelee',10);
-            $table->string('filiere');
-            $table->foreign('filiere')->references('codeFiliere')->on('filieres')->onDelete('cascade');
+            $table->string('libelleGroupe',10);
+            $table->string('filiereGroupe');
+            $table->foreign('filiereGroupe')->references('codeFiliere')->on('filieres')->onDelete('cascade');
         });
     }
 

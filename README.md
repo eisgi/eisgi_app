@@ -2,6 +2,7 @@
 
 ## Introduction
 
+
 Le présent document définit les exigences et les spécifications pour le développement d'un site Web destiné à la gestion d'emploi du temps. Ce site vise à fournir une plateforme conviviale et efficace permettant aux utilisateurs de planifier, organiser et suivre leur emploi du temps de manière simple et intuitive.
 
 ## Objectifs

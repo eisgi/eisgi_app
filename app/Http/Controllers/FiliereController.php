@@ -12,6 +12,9 @@ class FiliereController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function AF(){
+        
+    }
     public function index()
     {
         //

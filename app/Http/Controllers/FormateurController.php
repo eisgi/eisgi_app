@@ -12,6 +12,9 @@ class FormateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function AFOR(){
+        
+    }
     public function index()
     {
         //

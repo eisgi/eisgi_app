@@ -12,6 +12,11 @@ class SemestreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function AS(){
+        
+        
+    }
+    
     public function index()
     {
         //

@@ -12,7 +12,12 @@ class GroupeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+    public function AG()
+    {
+        //
+    }
+      public function index()
     {
         //
     }

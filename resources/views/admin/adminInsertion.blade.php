@@ -7,28 +7,7 @@
     <title>Insertion</title>
 </head>
 <body>
-        {{-- formulaire ajout d'un semestre --}}
-        <form method="POST" action="{{route('admin.ajoutSemestres')}}">
-            @csrf
-            <label>idSemestre</label>
-            <input type="text" name="idSemestre"/>
-            <label>dateDebutSemestre</label>
-            <input type="date" name="dateDebutSemestre"/>
-            <label>dateFinSemestre</label>
-            <input type="date" name="dateFinSemestre"/>
-        </form>
-
-
-
-
-    {{-- formulaire ajout d'une filière --}}
-    <form method="POST" action="{{route('admin.ajoutFilieres')}}">
-        @csrf
-        <label>codeFiliere</label>
-        <input type="text" name="codeFiliere"/>
-        <label>libelle</label>
-        <input type="text" name="libelle"/>
-    </form>
+       
 
     {{-- formulaire ajout des formateurs --}}
     <form method="POST" action="{{route('admin.ajoutFormateurs')}}">

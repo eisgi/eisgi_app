@@ -12,6 +12,9 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function AM(){
+        
+    }
     public function index()
     {
         //

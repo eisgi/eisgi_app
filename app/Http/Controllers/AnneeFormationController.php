@@ -16,6 +16,10 @@ class AnneeFormationController extends Controller
     {
         //
     }
+      public function AFOURM()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.

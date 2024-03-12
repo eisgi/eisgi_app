@@ -24,6 +24,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/test', function () {
+    return view('admin.adminInsertion');
+});
 
 // web.php
 
@@ -36,6 +39,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajoutFilieres',[FiliereController::class,'AF'])->name('admin.ajoutFilieres');
     Route::post('/ajoutFormateurs',[FormateurController::class,'AFOR'])->name('admin.ajoutFormateurs');
     Route::post('/ajoutModules',[ModuleController::class,'AM'])->name('admin.ajoutModules');
-    Route::post('/ajoutGroupes',[GroupeController::class,'AG'])->name('admin.ajoutGroupes');
+    Route::post('/ajoutGroupe',[GroupeController::class,'AG'])->name('admin.ajoutGroupes');
     Route::post('/ajoutGroupes',[AnneeFormationController::class,'AFOURM'])->name('admin.ajoutFormation');
 });

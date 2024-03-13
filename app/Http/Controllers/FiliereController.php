@@ -13,36 +13,49 @@ class FiliereController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function AF(Request $request)
+public function AF(Request $request)
 {
+    // Validate the request
     $request->validate([
-        'file' => 'required|file|mimes:csv,txt',
+        'file' => 'required|file|mimes:csv',
     ]);
 
+    // Retrieve the uploaded file
     $file = $request->file('file');
 
-    // Charger les données du fichier CSV
-    $csv = Reader::createFromPath($file->getPathname(), 'r');
-    $csv->setHeaderOffset(0); // Assuming the first row is the header row
-    $data = $csv->getRecords();
+    // Attempt to read the CSV file
+    try {
+        $csv = Reader::createFromPath($file->getPathname(), 'r');
+        $csv->setHeaderOffset(0); // Assuming the first row is the header row
+        $data = $csv->getRecords();
+    } catch (\Exception $e) {
+        // Handle any exceptions that occur during file reading
+        return redirect()->back()->withErrors(['file' => 'An error occurred while reading the CSV file.']);
+    }
 
-    // Parcourir chaque ligne et insérer dans la base de données
+    // Process each row and insert into the database
     foreach ($data as $row) {
-        // Ensure the keys exist in the $row array before accessing them
-        if (isset($row['codeFiliere']) && isset($row['libelleFiliere'])) {
-            Filiere::create([
-                'codeFiliere' => $row['codeFiliere'],
-                'libelleFiliere' => $row['libelleFiliere']
-            ]);
-        } 
+        try {
+            // Ensure the keys exist in the $row array before accessing them
+            if (isset($row['codeFiliere']) && isset($row['libelleFiliere'])) {
+                Filiere::create([
+                    'codeFiliere' => $row['codeFiliere'],
+                    'libelleFiliere' => $row['libelleFiliere']
+                ]);
+            }
+        } catch (\Exception $e) {
+            // Handle any exceptions that occur during database insertion
+            return redirect()->back()->withErrors(['file' => 'An error occurred while inserting data into the database.']);
+        }
     }
 
-  
-        Session::flash('success', 'Les filières ont été importées avec succès.');
+    // Flash success message to the session
+    Session::flash('success', 'Les filières ont été importées avec succès.');
 
-      
-        return redirect()->back();
-    }
+    // Redirect back with success message
+    return redirect()->back();
+}
+
 
     public function index()
     {

@@ -6,11 +6,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use League\Csv\Reader;
-
+use App\Models\Filiere;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Filiere;
 
 class CsvImportController extends Controller
 {

@@ -9,6 +9,7 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\SemestreController;
 use App\Http\Controllers\AnneeFormationController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,4 +42,17 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajoutModules',[ModuleController::class,'AM'])->name('admin.ajoutModules');
     Route::post('/ajoutGroupe',[GroupeController::class,'AG'])->name('admin.ajoutGroupes');
     Route::post('/ajoutGroupes',[AnneeFormationController::class,'AFOURM'])->name('admin.ajoutFormation');
+    Route::get('/afficherFilieres', [FiliereController::class, 'index'])->name('importFiliere.form');
+    Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
+    Route::post('/ajoutCSVFilieres',[FiliereController::class, 'AF'])->name('import.filieres');
 });
+
+// web.php
+
+
+
+// Show import form
+
+
+// Handle CSV file import
+

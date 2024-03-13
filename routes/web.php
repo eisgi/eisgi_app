@@ -8,6 +8,8 @@ use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\SemestreController;
 use App\Http\Controllers\AnneeFormationController;
+use App\Http\Controllers\CsvImportController;
+
 
 
 Route::get('/', function () {
@@ -31,5 +33,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajoutGroupes',[AnneeFormationController::class,'AFOURM'])->name('admin.ajoutFormation');
     Route::get('/afficherFilieres', [FiliereController::class, 'index'])->name('importFiliere.form');
     Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
-    Route::post('/ajoutCSVFilieres',[FiliereController::class, 'AF'])->name('import.filieres');
+    Route::post('/ajoutCSVFilieres',[CsvImportController::class, 'import'])->name('import.filieres');
 });

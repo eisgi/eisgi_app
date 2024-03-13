@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('filieres', function (Blueprint $table) {
-            $table->string('codeFiliere')->primary();
-            $table->string('libelleFiliere');
-        });
+       Schema::create('filieres', function (Blueprint $table) {
+    $table->string('codeFiliere')->primary();
+    $table->string('libelleFiliere');
+    $table->timestamps(); // Adds created_at and updated_at columns
+});
+
     }
 
     /**

@@ -25,9 +25,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/test', function () {
-    return view('admin.adminInsertion');
-});
 
 // web.php
 

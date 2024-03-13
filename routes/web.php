@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajoutGroupe', [GroupeController::class, 'AG'])->name('admin.ajoutGroupes');
     Route::post('/ajoutGroupes', [AnneeFormationController::class, 'AFOURM'])->name('admin.ajoutFormation');
     Route::get('/afficherFilieres', [FiliereController::class, 'index'])->name('importFiliere.form');
-    // Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
-    Route::post('/ajoutCSVFilieres',[FiliereController::class, 'AF'])->name('import.filieres');
+ Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
+    Route::post('/ajoutCSVFilieres',[CsvImportController::class, 'import'])->name('import.filieres');
     Route::get('/generationSemaines',[AnneeFormationController::class,'GenererSemaines']);
 });

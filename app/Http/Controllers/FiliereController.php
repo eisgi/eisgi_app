@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Session;
 use App\Models\Filiere;
 use Illuminate\Http\Request;
 use League\Csv\Reader;
@@ -34,14 +34,15 @@ class FiliereController extends Controller
                 'codeFiliere' => $row['codeFiliere'],
                 'libelleFiliere' => $row['libelleFiliere']
             ]);
-        } else {
-            // Log or handle the error appropriately
-            // For example, you can skip the row or throw an exception
-        }
+        } 
     }
 
-    return redirect()->back()->with('success', 'Les filières ont été importées avec succès.');
-}
+  
+        Session::flash('success', 'Les filières ont été importées avec succès.');
+
+      
+        return redirect()->back();
+    }
 
     public function index()
     {

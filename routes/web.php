@@ -10,27 +10,17 @@ use App\Http\Controllers\SemestreController;
 use App\Http\Controllers\AnneeFormationController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('auth.login');
 });
 
-
-// web.php
+////////////////////////////////////////////////////////
 
 Route::get('/login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class,'login'])->name('loginVerify');
 Route::post('/logout', [LoginController::class,'logout'])->name('logout');
+
+////////////////////////////////////////////////////////
 
 Route::prefix('admin')->group(function () {
     Route::post('/ajoutSemestres',[SemestreController::class,'AS'])->name('admin.ajoutSemestres');
@@ -43,13 +33,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
     Route::post('/ajoutCSVFilieres',[FiliereController::class, 'AF'])->name('import.filieres');
 });
-
-// web.php
-
-
-
-// Show import form
-
-
-// Handle CSV file import
-

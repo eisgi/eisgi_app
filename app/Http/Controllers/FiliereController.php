@@ -15,28 +15,27 @@ class FiliereController extends Controller
      */
 public function AF(Request $request)
 {
-    // Validate the request
+
     $request->validate([
         'file' => 'required|file|mimes:csv',
     ]);
 
-    // Retrieve the uploaded file
+    
     $file = $request->file('file');
 
-    // Attempt to read the CSV file
+
     try {
         $csv = Reader::createFromPath($file->getPathname(), 'r');
-        $csv->setHeaderOffset(0); // Assuming the first row is the header row
+        $csv->setHeaderOffset(0);
         $data = $csv->getRecords();
     } catch (\Exception $e) {
-        // Handle any exceptions that occur during file reading
-        return redirect()->back()->withErrors(['file' => 'An error occurred while reading the CSV file.']);
+     
+        return redirect()->back()->withErrors(['file' => 'Une erreur s est produite lors de la lecture du fichier CSV.']);
     }
 
-    // Process each row and insert into the database
     foreach ($data as $row) {
         try {
-            // Ensure the keys exist in the $row array before accessing them
+     
             if (isset($row['codeFiliere']) && isset($row['libelleFiliere'])) {
                 Filiere::create([
                     'codeFiliere' => $row['codeFiliere'],
@@ -44,8 +43,8 @@ public function AF(Request $request)
                 ]);
             }
         } catch (\Exception $e) {
-            // Handle any exceptions that occur during database insertion
-            return redirect()->back()->withErrors(['file' => 'An error occurred while inserting data into the database.']);
+
+            return redirect()->back()->withErrors(['file' => 'Une erreur s est produite lors de l insertion des données dans la base de données.']);
         }
     }
 

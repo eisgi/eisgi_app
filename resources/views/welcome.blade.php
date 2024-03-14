@@ -124,9 +124,9 @@
     </div>
     <div class="right">
       <ul class="menu trim">
-        <li><a href="http://facebook.com/designmodo" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
-        <li><a href="http://twitter.com/designmodo" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-        <li class="cropRight"><a href="http://instagram.com/designmodo" class="trimRight" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
+        <li><a href="#" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
+        <li><a href="#" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
+        <li class="cropRight"><a href="#" class="trimRight" target="_blank"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
       </ul>
     </div>
   </div>
@@ -174,13 +174,13 @@
             <h2 height="77" class="wide ae-1 fromCenter"> welcome</h2>
           </div>
         
-          <p class="ae-3"><span class="opacity-8">Start now  <b>on your account</b>  </span></p>
+          <p class="ae-3"><span class="opacity-8">login  now  <b>to your account</b>  </span></p>
            <form method="POST" action="{{ route('loginVerify') }}" class="slides-form" >
              @csrf
        
             <input type="text" class="input-9 ae-4 fromCenter" name="matricule" placeholder="Matricule" required val=""/>
             <input type="password" class="input-9 ae-5 fromCenter" name="password" placeholder="Password" val=""/>
-            <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Get Started</button>
+            <button type="submit" class="button blue gradient ae-7 fromCenter" name="button">Login</button>
           </form>
         </div>
 

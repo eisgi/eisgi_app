@@ -17,4 +17,7 @@ yarn-error.log
 /.idea
 /.vscode
 composer.json
+<<<<<<< HEAD
 composer.lock
+=======
+>>>>>>> ce7ee83245e2e4a159f7a6d1c5ff41358d874387

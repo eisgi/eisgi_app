@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class CsvImportController extends Controller
 {
     /**
-     * Handle Excel file import.
+     * Handle CSV file import.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -19,7 +19,7 @@ class CsvImportController extends Controller
     {
         // Validate the uploaded file
         $request->validate([
-            'file' => 'required|mimes:xlsx,xls|max:10240', // Adjust max file size as needed
+            'file' => 'required|mimes:csv,txt|max:10240', // Adjust max file size and allowed types as needed
         ]);
 
         // Retrieve the uploaded file
@@ -35,7 +35,7 @@ class CsvImportController extends Controller
             // Track the number of records imported
             $importedCount = 0;
 
-            // Import Excel data using Laravel Excel
+            // Import CSV data using Laravel Excel
             Excel::import(new FiliereImport, $file);
 
             // Commit the transaction if all operations are successful
@@ -51,7 +51,7 @@ class CsvImportController extends Controller
             \DB::rollBack();
 
             // Log the error
-            Log::error('Error during Excel import: ' . $e->getMessage());
+            Log::error('Error during CSV import: ' . $e->getMessage());
 
             // Redirect back with error message
             return redirect()->back()->withErrors(['file' => 'An error occurred during the import process.']);

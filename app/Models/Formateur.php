@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Formateur extends Model
 {
-    use HasFactory;
+    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'dateRejoint', 'matricule', 'password'];
 
-    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'dateRejoint'];
+    protected static function boot()
+    {
+        parent::boot();
 
-    // Rest of the model code...
+        static::creating(function ($formateur) {
+            $formateur->matricule = Str::random(8);
+            $formateur->password = Str::random(12);
+        });
+    }
 }

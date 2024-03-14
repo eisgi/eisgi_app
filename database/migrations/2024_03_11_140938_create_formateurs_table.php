@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -20,9 +19,10 @@ return new class extends Migration
             $table->string('prenom');
             $table->date('dateNaissance');
             $table->date('dateRejoint');
-            $table->string('matricule', 8)->unique()->nullable()->default(Str::random(8));
-            $table->string('password', 12)->unique()->default(Str::random(12));
-        });;
+            $table->string('matricule', 8)->unique()->nullable();
+            $table->string('password', 12)->unique()->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

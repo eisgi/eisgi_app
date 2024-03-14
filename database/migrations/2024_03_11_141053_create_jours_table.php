@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('jours', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_feriee')->default(false);
-            $table->string('id_semaine');
+            
             $table->timestamps();
         });
     }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Formateur extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'dateRejoint'];
+
+    // Rest of the model code...
 }

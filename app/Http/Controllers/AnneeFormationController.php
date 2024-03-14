@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class AnneeFormationController extends Controller
 {
-    public function GenererSemaines(){
-        return view('admin.AnneFormation.anneFormationGenerationSemaines');
-    }
+    
     /**
      * Display a listing of the resource.
      *

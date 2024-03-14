@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="{{ asset('style/login/assets/js/GenererSemaines.js')}}"></script>
 </head>
 <body>
-    <form method="POST" onsubmit="return false;">
-        <label>annee de Formation</label>
-        <input type="text" name="anneeFormation" />
-        <label>date Debut Annee Formation</label>
-        <input type="date" id="dateDebut" name="DDAF" />
-        <label>date Fin Annee Formation</label>
-        <input type="date" id="dateFin" name="DFAF" />
-        <button id="submitBtn">Submit</button>
+<form action="{{ route('genererSemaines') }}" method="POST">
+        @csrf
+        <label for="anneFormation">Anne Formation</label>
+        <input type="text" id="anneFormation" name="anneFormation">
+        <label for="dateDebut">Date de début :</label>
+        <input type="date" id="dateDebut" name="dateDebut">
+        <label for="dateFin">Date de fin :</label>
+        <input type="date" id="dateFin" name="dateFin">
+        <button type="submit" id="submitBtn">Générer</button>
     </form>
-    <div id="resultContainer"></div>
+    
+    <div id="resultContainer">
+        @isset($weeks)
+            @foreach($weeks as $week)
+                <div>{{ $week['codeSemaine'] }}: {{ $week['dateDebutSemaine'] }} - {{ $week['dateFinSemaine'] }}</div>
+            @endforeach
+        @endisset
+    </div>
 
  
 </body>

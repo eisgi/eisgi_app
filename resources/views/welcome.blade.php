@@ -156,11 +156,7 @@
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Contact Us</a></li>
     </ul>
-    <ul class="social opacity-8">
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook"></use></svg></a></li>
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#twitter"></use></svg></a></li>
-      <li><a href="#"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#instagram"></use></svg></a></li>
-    </ul>
+    
   </div>
 </nav>
 

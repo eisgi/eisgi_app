@@ -12,6 +12,11 @@ class FormateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function returnForm(){
+        
+        return view('admin.fourmateurs.insertFourmateurs');
+     }
     public function AFOR(){
         
     }

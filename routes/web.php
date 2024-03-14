@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function () {
     // Route::get('/generationSemaines',[AnneeFormationController::class,'GenererSemaines']);
     Route::get('/semaines', [SemaineController::class, 'index']);
     Route::post('/semaines', [SemaineController::class, 'generer'])->name('genererSemaines');
-    Route::post('/ajoutCSVFourmateurs',[CsvImportFourmateur::class, 'import'])->name(' import.Fourmateurs');
+    Route::get('/ajoutCSVFourmateurs', [FormateurController::class, 'returnForm']);
+    Route::post('/ajoutCSVFourmateurs',[CsvImportFourmateur::class, 'import'])->name('import.Fourmateurs');
    
 });

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('semaines', function (Blueprint $table) {
             $table->id();
-            $table->string('codeSemaine')->unique();
+            $table->string('codeSemaine');
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');
             $table->string('anneeformation',9);

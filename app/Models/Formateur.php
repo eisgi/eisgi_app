@@ -9,7 +9,7 @@ class Formateur extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'dateRejoint'];
+    protected $fillable = ['nom', 'prenom', 'dateNaissance', 'dateRejoint','matricule','password'];
 
     // Rest of the model code...
 }

@@ -21,97 +21,95 @@ class SemaineController extends Controller
     }
     public function generer(Request $request)
     {
-       
+
         $request->validate([
             'anneFormation' => 'required|string',
             'dateDebut' => 'required|date',
             'dateFin' => 'required|date|after_or_equal:dateDebut',
         ]);
-    
-        // Récupération des données du formulaire
+
         $anneeFormationInput = $request->input('anneFormation');
         $dateDebut = $request->input('dateDebut');
         $dateFin = $request->input('dateFin');
-        
-    
+
+
         // Création de l'année de formation
-        $anneeFormation = DB::table('annee_formations')->insertGetId([
+        $anneeFormation = AnneeFormation::create([
             'anneeFormation' => $anneeFormationInput,
             'dateDebutAnneeFormation' => $dateDebut,
             'dateFinAnneeFormation' => $dateFin
         ]);
-        
-    
         // // Génération des semaines
         $weeks = $this->semainesCreation($dateDebut, $dateFin);
-    
         // Sauvegarde des semaines
         foreach ($weeks as $week) {
-            DB::table('semaines')->insert([
+            $semaines=Semaine::create([
                 'codeSemaine' => $week['codeSemaine'],
                 'dateDebutSemaine' => $week['dateDebutSemaine'],
                 'dateFinSemaine' => $week['dateFinSemaine'],
                 'anneeformation' => $anneeFormationInput,
             ]);
         }
-        
-    
-        // Redirection avec message de succès ou d'erreur
-        return redirect()->route('admin.AnneFormation.anneFormationGenerationSemaines')->with('success', 'Semaines ajoutées avec succès.');
+        if ($anneeFormation && $semaines) {
+            return redirect()->back()->with('success', 'AnneFormation,Semaines ajoutées avec succès.');
+        }
+        else{
+            return redirect()->back()->with('error', 'probleme d\'insertion.');
+        }
     }
-    
+
 
 
     public function semainesCreation($dateDebut, $dateFin)
-{
-    $dateDebut = new \DateTime($dateDebut);
-    $dateFin = new \DateTime($dateFin);
-    // $dateDebut->modify('+1 day');
+    {
+        $dateDebut = new \DateTime($dateDebut);
+        $dateFin = new \DateTime($dateFin);
+        // $dateDebut->modify('+1 day');
 
-    $weeks = [];
-    $incr = 0;
+        $weeks = [];
+        $incr = 0;
 
-    while ($dateDebut <= $dateFin) {
-        $jourDD = $dateDebut->format('N');
-        $dateFinOfWeek = clone $dateDebut;
+        while ($dateDebut <= $dateFin) {
+            $jourDD = $dateDebut->format('N');
+            $dateFinOfWeek = clone $dateDebut;
 
-        switch ($jourDD) {
-            case 1:
-                $dateFinOfWeek->modify('+5 days');
-                break;
-            case 2:
-                $dateFinOfWeek->modify('+4 days');
-                break;
-            case 3:
-                $dateFinOfWeek->modify('+3 days');
-                break;
-            case 4:
-                $dateFinOfWeek->modify('+2 days');
-                break;
-            case 5:
-                $dateFinOfWeek->modify('+1 days');
-                break;
-            case 6:
-                // Saturday
-                break;
-            default:
-                $dateFinOfWeek->modify('+1 days');
-                break;
+            switch ($jourDD) {
+                case 1:
+                    $dateFinOfWeek->modify('+5 days');
+                    break;
+                case 2:
+                    $dateFinOfWeek->modify('+4 days');
+                    break;
+                case 3:
+                    $dateFinOfWeek->modify('+3 days');
+                    break;
+                case 4:
+                    $dateFinOfWeek->modify('+2 days');
+                    break;
+                case 5:
+                    $dateFinOfWeek->modify('+1 days');
+                    break;
+                case 6:
+                    // Saturday
+                    break;
+                default:
+                    $dateFinOfWeek->modify('+1 days');
+                    break;
+            }
+
+            $weeks[] = [
+                'codeSemaine' => 'S' . ($incr + 1),
+                'dateDebutSemaine' => $dateDebut->format('Y-m-d'),
+                'dateFinSemaine' => $dateFinOfWeek->format('Y-m-d'),
+            ];
+
+            $dateDebut = clone $dateFinOfWeek;
+            $dateDebut->modify('+2 days');
+            $incr++;
         }
 
-        $weeks[] = [
-            'codeSemaine' => 'S' . ($incr + 1),
-            'dateDebutSemaine' => $dateDebut->format('Y-m-d'),
-            'dateFinSemaine' => $dateFinOfWeek->format('Y-m-d'),
-        ];
-
-        $dateDebut = clone $dateFinOfWeek;
-        $dateDebut->modify('+2 days');
-        $incr++;
+        return $weeks;
     }
-
-    return $weeks;
-}
 
 
     public function create(Request $request)

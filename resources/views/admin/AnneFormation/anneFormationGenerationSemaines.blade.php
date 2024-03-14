@@ -18,11 +18,16 @@
     </form>
     
     <div id="resultContainer">
-        @isset($weeks)
-            @foreach($weeks as $week)
-                <div>{{ $week['codeSemaine'] }}: {{ $week['dateDebutSemaine'] }} - {{ $week['dateFinSemaine'] }}</div>
-            @endforeach
-        @endisset
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-success">
+            {{ session('error') }}
+        </div>
+    @endif
     </div>
 
  

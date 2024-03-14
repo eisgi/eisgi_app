@@ -187,7 +187,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-09.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-09.jpg') }})"></div>
 </section>
 
 <!-- Popup Video -->
@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-15.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-15.jpeg') }})"></div>
 </section>
 
 <!-- Slide 3 (#14) -->
@@ -244,7 +244,7 @@
       </div>  
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-14.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-14.jpg') }})"></div>
 </section>
 
 <!-- Slide 4 (#89) -->
@@ -281,9 +281,9 @@
             <li class="col-1-12">&nbsp;</li>
             <li class="col-5-12 bottom">
               <div class="videoThumbnail shadow rounded popupTrigger margin-bottom-3 ae-7" data-popup-id="89-3">
-                <img src="assets/img/image-89-1.jpg" class="wide" alt="Video Thumbnail"/>
+                <img src="{{ asset('style/home/assets/img/image-89-1.jpg') }}" class="wide" alt="Video Thumbnail"/>
               </div>
-              <img src="assets/img/image-89-2.jpg" data-action="zoom" class="shadow rounded ae-8" alt="Image"/>
+              <img src="{{ asset('style/home/assets/img/image-89-2.jpg') }}" data-action="zoom" class="shadow rounded ae-8" alt="Image"/>
             </li>
           </ul>
         </div>
@@ -291,7 +291,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-89.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-89.jpg') }})"></div>
 </section>
 
 <!-- Popup Video -->
@@ -363,7 +363,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-85.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-85.jpg') }})"></div>
 </section>
 
 <!-- Slide 6 (#95) -->
@@ -381,13 +381,13 @@
             <button type="submit" class="button blue gradient ae-4" name="submit">Try it free</button>
           </form>
 
-          <a href="#" class="button hollow ae-5"><img src="assets/img/appstore.jpg" height="63"/></a><a href="#" class="button hollow ae-6"><img src="assets/img/googleplay.jpg" height="63"/></a>
+          <a href="#" class="button hollow ae-5"><img src="{{ asset('style/home/assets/img/appstore.jpg') }}" height="63"/></a><a href="#" class="button hollow ae-6"><img src="{{ asset('style/home/assets/img/googleplay.jpg') }}" height="63"/></a>
         </div>
                 
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url(assets/img/background/img-95.jpg)"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-95.jpg') }})"></div>
 </section>
 
 <!-- Panel Bottom #15 -->

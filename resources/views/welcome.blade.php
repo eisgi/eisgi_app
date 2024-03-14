@@ -173,9 +173,7 @@
           <div class="fix-3-12">
             <h2 height="77" class="wide ae-1 fromCenter"> welcome</h2>
           </div>
-          <div class="button play small white popupTrigger ae-2 fromCenter margin-top-6 margin-bottom-6" data-popup-id="9">
-            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#play"></use></svg>
-          </div>
+        
           <p class="ae-3"><span class="opacity-8">Start now  <b>on your account</b>  </span></p>
            <form method="POST" action="{{ route('loginVerify') }}" class="slides-form" >
              @csrf

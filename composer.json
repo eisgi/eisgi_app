@@ -10,7 +10,10 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "league/csv": "^9.8"
+        "league/csv": "^9.8",
+        "maatwebsite/excel": "*",
+        "phpoffice/phpspreadsheet": "*",
+        "psr/simple-cache": "2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

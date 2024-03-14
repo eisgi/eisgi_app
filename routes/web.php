@@ -12,7 +12,7 @@ use App\Http\Controllers\CsvImportController;
 use App\Http\Controllers\SemaineController;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 ////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajoutGroupes', [AnneeFormationController::class, 'AFOURM'])->name('admin.ajoutFormation');
     Route::get('/afficherFilieres', [FiliereController::class, 'index'])->name('importFiliere.form');
     Route::get('/ajoutCSVFilieres', [FiliereController::class, 'returnForm']);
-    Route::post('/ajoutCSVFilieres',[FiliereController::class, 'AF'])->name('import.filieres');
+    Route::post('/ajoutCSVFilieres',[CsvImportController::class, 'import'])->name('import.filieres');
     // Route::get('/generationSemaines',[AnneeFormationController::class,'GenererSemaines']);
     Route::get('/semaines', [SemaineController::class, 'index']);
     Route::post('/semaines', [SemaineController::class, 'generer'])->name('genererSemaines');

@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="{{ asset('style/home/assets/img/background/img-15.jpg') }})"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-15.jpeg') }})"></div>
 </section>
 
 <!-- Slide 3 (#14) -->

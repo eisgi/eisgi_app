@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Filiere;
 use Illuminate\Http\Request;
 use League\Csv\Reader;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class FiliereController extends Controller
 {
@@ -13,47 +16,43 @@ class FiliereController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
 public function AF(Request $request)
 {
+  
 
-    $request->validate([
-        'file' => 'required|file|mimes:csv',
-    ]);
-
-    
     $file = $request->file('file');
-
 
     try {
         $csv = Reader::createFromPath($file->getPathname(), 'r');
         $csv->setHeaderOffset(0);
         $data = $csv->getRecords();
-    } catch (\Exception $e) {
-     
-        return redirect()->back()->withErrors(['file' => 'Une erreur s est produite lors de la lecture du fichier CSV.']);
-    }
 
-    foreach ($data as $row) {
-        try {
-     
+        DB::beginTransaction();
+
+        foreach ($data as $row) {
             if (isset($row['codeFiliere']) && isset($row['libelleFiliere'])) {
                 Filiere::create([
                     'codeFiliere' => $row['codeFiliere'],
                     'libelleFiliere' => $row['libelleFiliere']
                 ]);
             }
-        } catch (\Exception $e) {
-
-            return redirect()->back()->withErrors(['file' => 'Une erreur s est produite lors de l insertion des données dans la base de données.']);
         }
+
+        DB::commit();
+
+        // Flash success message to the session
+        return redirect()->back()->with('success', 'Les filières ont été importées avec succès.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+     Log::error($e->getMessage());
+
+        // Redirect back with error message
+        return redirect()->back()->withErrors(['file' => 'Une erreur s\'est produite lors de l\'importation des données.']);
     }
-
-    // Flash success message to the session
-    Session::flash('success', 'Les filières ont été importées avec succès.');
-
-    // Redirect back with success message
-    return redirect()->back();
 }
+
 
 
     public function index()

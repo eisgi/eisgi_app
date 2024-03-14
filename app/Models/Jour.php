@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Jour extends Model
 {
     use HasFactory;
+    protected $fillable = ['is_feriee', 'id_semaine'];
+    public function semaine()
+    {
+        return $this->belongsTo(Semaine::class, 'id_semaine', 'id');
+    }
 }

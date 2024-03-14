@@ -15,6 +15,10 @@ class Semaine extends Model
     {
         return $this->belongsTo(AnneeFormation::class, 'anneeformation', 'anneeformation');
     }
+    public function jours()
+    {
+        return $this->hasMany(Jour::class, 'id_semaine', 'id');
+    }
 }
 
 

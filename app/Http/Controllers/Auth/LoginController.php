@@ -34,7 +34,7 @@ class LoginController extends Controller
                 break;
 
             case 'FORM':
-                return view('formateurs.formateurHome');
+                return view('formateurs.formateurHome',['user'=>$user]);
                 break;
 
             case 'STAG':

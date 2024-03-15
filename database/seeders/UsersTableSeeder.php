@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'AmaleNASIM@gmail.com',
             'role' => 'ADM',
             'matricule' => 'NASAML01',
-            'password' => Hash::make('123AMALE'),
+            'password' => '123AMALE',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

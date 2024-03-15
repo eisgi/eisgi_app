@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         switch ($role) {
             case 'ADM':
-                return view('admin.adminInsertion', compact('user'));
+                return view('admin.adminHome', compact('user'));
                 break;
 
             case 'FORM':

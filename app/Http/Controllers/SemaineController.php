@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnneeFormation;
+use App\Models\Jour;
 use App\Models\Semaine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,44 +20,90 @@ class SemaineController extends Controller
     {
         return view('admin.AnneFormation.anneFormationGenerationSemaines');
     }
+
     public function generer(Request $request)
     {
 
-        $request->validate([
-            'anneFormation' => 'required|string',
-            'dateDebut' => 'required|date',
-            'dateFin' => 'required|date|after_or_equal:dateDebut',
-        ]);
+        // $request->validate([
+        //     'anneFormation' => 'required|string',
+        //     'dateDebut' => 'required|date',
+        //     'dateFin' => 'required|date|after_or_equal:dateDebut',
+        //     'du' => 'required|date',
+        //     'au' => 'required|date|after_or_equal:du',
+        //     'libelle_jour_ferie' => 'required|string',
+        // ]);
 
         $anneeFormationInput = $request->input('anneFormation');
         $dateDebut = $request->input('dateDebut');
         $dateFin = $request->input('dateFin');
+        $joursFeriesData = json_decode($request->input('joursFeriesData'), true);
+        
+        dd([
+            // 'anneeFormationInput' => $anneeFormationInput,
+            // 'dateDebut' => $dateDebut,
+            // 'dateFin' => $dateFin,
+            'joursFeriesData' => $joursFeriesData,
+        ]);
+        
 
 
-        // Création de l'année de formation
+
+
+        // // Création de l'année de formation
         $anneeFormation = AnneeFormation::create([
             'anneeFormation' => $anneeFormationInput,
             'dateDebutAnneeFormation' => $dateDebut,
             'dateFinAnneeFormation' => $dateFin
         ]);
-        // // Génération des semaines
+        //  // Génération des semaines
         $weeks = $this->semainesCreation($dateDebut, $dateFin);
-        // Sauvegarde des semaines
+        // // Sauvegarde des semaines
         foreach ($weeks as $week) {
-            $semaines=Semaine::create([
+            $semaine = Semaine::create([
                 'codeSemaine' => $week['codeSemaine'],
                 'dateDebutSemaine' => $week['dateDebutSemaine'],
                 'dateFinSemaine' => $week['dateFinSemaine'],
                 'anneeformation' => $anneeFormationInput,
             ]);
+            $this->generateAndSaveDays($semaine, $joursFeriesData); // Passer $joursFeriesData à la fonction
         }
-        if ($anneeFormation && $semaines) {
-            return redirect()->back()->with('success', 'AnneFormation,Semaines ajoutées avec succès.');
+        
+        if ($anneeFormation && $semaine) {
+            return redirect()->back()->with('success', 'AnneFormation,Semaines,jours feries ajoutées avec succès.');
         }
         else{
             return redirect()->back()->with('error', 'probleme d\'insertion.');
         }
     }
+
+    private function generateAndSaveDays($semaine, $joursFeriesData)
+{
+    $dateDebut = new \DateTime($semaine->dateDebutSemaine);
+    $dateFin = new \DateTime($semaine->dateFinSemaine);
+
+    while ($dateDebut <= $dateFin) {
+        $jour = new Jour();
+    
+        $dateJour = $dateDebut->format('Y-m-d');
+        $jourFerie = false;
+        $libelleJourFerie = 'Ce jour n\'est pas un jour férié';
+        foreach ($joursFeriesData as $jourFerieData) {
+            if ($dateJour >= $jourFerieData['du'] && $dateJour <= $jourFerieData['au']) {
+                $jourFerie = true;
+                $libelleJourFerie = $jourFerieData['libelle'];
+                break;
+            }
+        }
+        $jour->is_feriee = $jourFerie;
+        $jour->libelle=$libelleJourFerie;
+    
+        $jour->save();
+        $semaine->jours()->save($jour);
+    
+        $dateDebut->modify('+1 day');
+    }
+    
+}
 
 
 

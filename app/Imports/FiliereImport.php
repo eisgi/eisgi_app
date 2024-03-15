@@ -17,7 +17,7 @@ class FiliereImport implements ToCollection
             // Assuming the first column contains the codeFiliere and the second column contains the libelleFiliere
             Filiere::create([
                 'codeFiliere' => $row[0],
-                'libelleFiliere' => $row[1]
+                'libelleFiliere' => $row[1],
             ]);
         }
     }

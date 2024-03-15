@@ -181,7 +181,7 @@ table th {
         if (joursFeriesData.length >= 1) {
             document.getElementById("validerModificationsBtn").style.display = "inline"; // Afficher le bouton "Valider les modifications"
         }
-        if (joursFeriesData.length >= 1) {
+        if (joursFeriesData.length >= 13) {
             document.getElementById("genererBtn").style.display = "inline";
             document.getElementById("du").removeAttribute("required");
             document.getElementById("au").removeAttribute("required");

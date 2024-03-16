@@ -11,6 +11,7 @@ use App\Http\Controllers\AnneeFormationController;
 use App\Http\Controllers\CsvImportController;
 use App\Http\Controllers\CsvImportFourmateur;
 use App\Http\Controllers\SemaineController;
+use App\Http\Controllers\EmploiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,5 +40,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/semaines', [SemaineController::class, 'generer'])->name('genererSemaines');
     Route::get('/ajoutCSVFourmateurs', [FormateurController::class, 'returnForm']);
     Route::post('/ajoutCSVFourmateurs',[CsvImportFourmateur::class, 'import'])->name('import.Fourmateurs');
-   
+    Route::get('/GererEmploi',[EmploiController::class,'index']);
+
 });

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Emploi;
+use App\Models\Formateur;
+use App\Models\Salle;
+use App\Models\Filiere;
+use App\Models\Groupe;
+use App\Models\Modul;
+
 use Illuminate\Http\Request;
 
 class EmploiController extends Controller
@@ -14,7 +20,15 @@ class EmploiController extends Controller
      */
     public function index()
     {
-        //
+        $filieres=Filiere::all();
+        $salles=Salle::all();
+        $formateurs=Formateur::all();
+        $groupes=Groupe::all();
+        $modules=Module::all();
+
+
+
+        return view('admin.emploi.emploiDuTemps',compact(['filieres','salles','formateurs','groupes','modules']));
     }
 
     /**

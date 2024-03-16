@@ -10,7 +10,7 @@
     width: 100%;
   }
   th, td {
-    
+
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
@@ -84,6 +84,16 @@
                 <td>
                     Formateur
                 </td>
+            @for($i = 0; $i < 23; $i++)
+                <td>
+                    <select name="formateurs[]">
+                        <option value="">Select Formateur</option>
+                        @foreach($formateurs as $formateur)
+                            <option value="{{$formateur->id}}">{{$formateur->nom}}-{{$formateur->prenom}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            @endfor
     </tr>
     <tr>
 
@@ -93,7 +103,7 @@
                     Module
                 </td>
 
-            @for($i = 0; $i < 24; $i++)
+            @for($i = 0; $i < 23; $i++)
                 <td>
                     <select name="modules[]">
                         <option value="">Select Module</option>
@@ -112,6 +122,16 @@
                 <td>
                     Salle
                 </td>
+                @for($i = 0; $i < 23; $i++)
+                <td>
+                    <select name="salles[]">
+                        <option value="">Select Salle</option>
+                        @foreach($salles as $salle)
+                            <option value="{{$salle->id}}">{{$salle->Salle}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            @endfor
     </tr>
 
 

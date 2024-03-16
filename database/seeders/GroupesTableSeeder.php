@@ -16,11 +16,11 @@ class GroupesTableSeeder extends Seeder
         DB::table('groupes')->insert([
             [
                 'libelleGroupe' => '2DEVWFS 203',
-                'filiereGroupe' => 'DDWS',
+                'filiereGroupe' => 'DWFS',
             ],
             [
                 'libelleGroupe' => '2DEVWFS 204',
-                'filiereGroupe' => 'DDWS',
+                'filiereGroupe' => 'DWFS',
             ],
             [
                 'libelleGroupe' => '2GEOCM 201',

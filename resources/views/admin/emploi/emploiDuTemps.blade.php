@@ -10,6 +10,7 @@
     width: 100%;
   }
   th, td {
+    
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
@@ -97,7 +98,7 @@
                     <select name="modules[]">
                         <option value="">Select Module</option>
                         @foreach($modules as $module)
-                            <option value="{{$module->id}}">{{$module->libelleModule}}-{{$module->libelleModule}}</option>
+                            <option value="{{$module->id}}">{{$module->codeModule}}-{{$module->libelleModule}}</option>
                         @endforeach
                     </select>
                 </td>

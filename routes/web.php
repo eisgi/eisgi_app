@@ -43,3 +43,4 @@ Route::prefix('admin')->group(function () {
     Route::get('/GererEmploi',[EmploiController::class,'index']);
 
 });
+Route::get('/fourmateur-emploi',[EmploiController::class,'fourmateur']);

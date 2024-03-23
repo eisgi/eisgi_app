@@ -30,6 +30,9 @@ class EmploiController extends Controller
 
         return view('admin.emploi.emploiDuTemps',compact(['filieres','salles','formateurs','groupes','modules']));
     }
+    public function fourmateur(){
+        return view('formateurs.timeTable');
+    }
 
     /**
      * Show the form for creating a new resource.

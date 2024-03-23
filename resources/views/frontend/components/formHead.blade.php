@@ -12,4 +12,6 @@
         @csrf
         <button type="submit" class="btn btn-danger">Logout</button>
     </form>
+  <a href="{{ route('emploi.fourmateur') }}" class="btn btn-primary">Consulter Emploi du temps</a>
+
 </div>

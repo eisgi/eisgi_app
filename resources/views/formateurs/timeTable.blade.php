@@ -49,13 +49,13 @@
                         <li class="single-event" data-start="8:30" data-end="13:00" data-content="event-constitucion"
                             data-event="event-1">
                             <a href="#0">
-                                <em class="event-name">Constitution</em>
+                                <em class="event-name">Anglais technique</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="17:00" data-end="19:00" data-content="event-intro-educa"
                             data-event="event-3">
                             <a href="#0">
-                                <em class="event-name">Introduction à l'éducation</em>
+                                <em class="event-name">Approche agile</em>
                             </a>
                         </li>
                     </ul>
@@ -68,13 +68,13 @@
                         <li class="single-event" data-start="11:00" data-end="13:00" data-content="event-mates"
                             data-event="event-1">
                             <a href="#0">
-                                <em class="event-name">Mathématiques</em>
+                                <em class="event-name">Création d'une application Cloud native</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="17:00" data-end="18:00" data-content="event-gestion"
                             data-event="event-4">
                             <a href="#0">
-                                <em class="event-name">Gestion environnementale</em>
+                                <em class="event-name">Culture entrepreneuriale</em>
                             </a>
                         </li>
                     </ul>
@@ -87,13 +87,13 @@
                         <li class="single-event" data-start="13:00" data-end="15:00" data-content="event-constitucion"
                             data-event="event-2">
                             <a href="#0">
-                                <em class="event-name">Constitution</em>
+                                <em class="event-name">Développement back-end</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="17:00" data-end="19:00" data-content="event-intro-educa"
                             data-event="event-3">
                             <a href="#0">
-                                <em class="event-name">Introduction à l'éducation</em>
+                                <em class="event-name">Développement front-end</em>
                             </a>
                         </li>
                     </ul>
@@ -106,13 +106,13 @@
                         <li class="single-event" data-start="11:00" data-end="13:00" data-content="event-mates"
                             data-event="event-1">
                             <a href="#0">
-                                <em class="event-name">Mathématiques</em>
+                                <em class="event-name">Préparation d'un projet web</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="17:00" data-end="18:00" data-content="event-gestion"
                             data-event="event-4">
                             <a href="#0">
-                                <em class="event-name">Gestion environnementale</em>
+                                <em class="event-name">Projet de synthèse</em>
                             </a>
                         </li>
                     </ul>
@@ -125,19 +125,38 @@
                         <li class="single-event" data-start="10:00" data-end="11:00" data-content="event-mates"
                             data-event="event-1">
                             <a href="#0">
-                                <em class="event-name">Mathématiques</em>
+                                <em class="event-name">Français</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="13:00" data-end="14:00" data-content="event-intro-educa"
                             data-event="event-3">
                             <a href="#0">
-                                <em class="event-name">Introduction à l'éducation</em>
+                                <em class="event-name">Projet de synthèse</em>
                             </a>
                         </li>
                         <li class="single-event" data-start="18:00" data-end="18:30" data-content="event-gestion"
                             data-event="event-4">
                             <a href="#0">
-                                <em class="event-name">Gestion environnementale</em>
+                                <em class="event-name">Culture entrepreneuriale</em>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="events-group">
+                    <div class="top-info"><span>Samedi</span></div>
+
+                    <ul>
+                        <li class="single-event" data-start="8:30" data-end="13:00" data-content="event-constitucion"
+                            data-event="event-1">
+                            <a href="#0">
+                                <em class="event-name">Culture et techniques avancées du numérique</em>
+                            </a>
+                        </li>
+                        <li class="single-event" data-start="17:00" data-end="19:00" data-content="event-intro-educa"
+                            data-event="event-3">
+                            <a href="#0">
+                                <em class="event-name">Angular</em>
                             </a>
                         </li>
                     </ul>

@@ -7,7 +7,7 @@ use App\Models\Formateur;
 use App\Models\Salle;
 use App\Models\Filiere;
 use App\Models\Groupe;
-use App\Models\Modul;
+use App\Models\Module;
 
 use Illuminate\Http\Request;
 

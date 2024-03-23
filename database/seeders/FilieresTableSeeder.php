@@ -15,7 +15,7 @@ class FilieresTableSeeder extends Seeder
     {
         DB::table('filieres')->insert([
             [
-                'codeFiliere' => 'DDWS',
+                'codeFiliere' => 'DWFS',
                 'libelleFiliere' => 'Développement Digital option Web Full Stack',
                 'created_at' => now(),
                 'updated_at' => now(),

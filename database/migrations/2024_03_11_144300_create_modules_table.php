@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('codeModule');
             $table->string('libelleModule', 100);
             $table->unsignedMediumInteger('ordreModule');
-            $table->decimal('MasseHoraireTotal', 6, 2);
 
             $table->decimal('MHT', 8, 2);
             $table->unsignedInteger('Coef');
@@ -29,7 +28,7 @@ return new class extends Migration
             $table->string('semestreModule', 2);
             $table->foreign('semestreModule')->references('idSemestre')->on('semestres')->onDelete('cascade');
 
-            $table->unique(['codeModule', 'libelleModule', 'filiereModule', 'semestreModule'],'unique_module_combinaison');
+            // $table->unique(['codeModule', 'libelleModule', 'filiereModule', 'semestreModule'],'unique_module_combinaison');
 
         });
     }

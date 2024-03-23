@@ -46,8 +46,8 @@
                     <div class="top-info"><span>Lundi</span></div>
 
                     <ul>
-                        <li class="single-event" data-start="13:00" data-end="15:00" data-content="event-constitucion"
-                            data-event="event-2">
+                        <li class="single-event" data-start="8:30" data-end="13:00" data-content="event-constitucion"
+                            data-event="event-1">
                             <a href="#0">
                                 <em class="event-name">Constitution</em>
                             </a>
@@ -149,8 +149,8 @@
         <div class="event-modal">
             <header class="header">
                 <div class="content">
-                    <span class="event-date"></span>
-                    <h3 class="event-name"></h3>
+                    <span class="event-date">underwater</span>
+                    <h3 class="event-name">underwater</h3>
                 </div>
 
                 <div class="header-bg"></div>
@@ -169,7 +169,7 @@
     <script src="{{ asset('style/emploi/js/modernizr.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
-        var jqueryUrl = "{{ asset('style/emploi/js/jquery-3.0.0.min.js') }}";
+        var jqueryUrl = "{{ asset('style/emploi/js/main.js') }}";
         if (!window.jQuery) document.write('<script src="' + jqueryUrl + '"><\/script>');
     </script>
 

@@ -15,16 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('users')->insert([
-            'id' => 1,
-            'nom' => 'NASIM',
-            'prenom' => 'Amale',
-            'email' => 'AmaleNASIM@gmail.com',
-            'role' => 'ADM',
-            'matricule' => 'NASAML01',
-            'password' => '123AMALE',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+    $this->call(FilieresTableSeeder::class);
+    $this->call(GroupesTableSeeder::class);
+    $this->call(SallesTableSeeder::class);
+    $this->call(ModulesTableSeeder::class);
+    $this->call(SemestresTableSeeder::class);
+    $this->call(UsersTableSeeder::class);
+
+       
     }
 }

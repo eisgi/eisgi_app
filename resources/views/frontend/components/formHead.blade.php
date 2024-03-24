@@ -54,6 +54,9 @@
                     <small class="text-muted">{{ $user->matricule }}</small>
                 </div>
             </div>
+            <div class="about">
+                   <a href="{{route('updatePSW.fourmateur')}}"><h5>update pasword</h5></a> 
+            </div>
             {{--
                     <div class="about">
                     <h5>DOB</h5>

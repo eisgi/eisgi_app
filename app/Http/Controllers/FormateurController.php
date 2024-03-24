@@ -17,6 +17,10 @@ class FormateurController extends Controller
         
         return view('admin.fourmateurs.insertFourmateurs');
      }
+
+    public function updatePSW(){
+        
+    }
     public function AFOR(){
         
     }

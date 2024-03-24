@@ -115,30 +115,7 @@
             </div>
         </div>
 
-        <div class="leaves">
-            <h2>Teachers on leave</h2>
-            <div class="teacher">
-                <div class="profile-photo"><img src="./images/profile-2.jpeg" alt=""></div>
-                <div class="info">
-                    <h3>The Professor</h3>
-                    <small class="text-muted">Full Day</small>
-                </div>
-            </div>
-            <div class="teacher">
-                <div class="profile-photo"><img src="./images/profile-3.jpg" alt=""></div>
-                <div class="info">
-                    <h3>Lisa Manobal</h3>
-                    <small class="text-muted">Half Day</small>
-                </div>
-            </div>
-            <div class="teacher">
-                <div class="profile-photo"><img src="./images/profile-4.jpg" alt=""></div>
-                <div class="info">
-                    <h3>Himanshu Jindal</h3>
-                    <small class="text-muted">Full Day</small>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Formateur;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class FormateurController extends Controller
 {
@@ -14,12 +15,13 @@ class FormateurController extends Controller
      */
 
     public function returnForm(){
-        
-        return view('admin.fourmateurs.insertFourmateurs');
+        $user = User::findOrFail($id);
+        return view('admin.fourmateurs.insertFourmateurs', compact('user'));
      }
 
-    public function updatePSW(){
+    public function updatePSW($id){
         
+        return view('formateurs.updatePSW');
     }
     public function AFOR(){
         

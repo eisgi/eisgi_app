@@ -55,7 +55,9 @@
                 </div>
             </div>
             <div class="about">
-                   <a href="{{route('updatePSW.fourmateur')}}"><h5>update pasword</h5></a> 
+                <a href="{{ route('updatePSW.fourmateur', ['id' => $user->id]) }}">
+                    <h5>Update Password</h5>
+                </a>
             </div>
             {{--
                     <div class="about">

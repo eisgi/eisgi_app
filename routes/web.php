@@ -44,7 +44,9 @@ Route::prefix('admin')->group(function () {
 
 });
 Route::prefix('fourmateur')->group(function () {
+
     Route::get('/emploi',[EmploiController::class,'fourmateur'])->name('emploi.fourmateur');
-    Route::get('/updatePSW/{id}', [FormateurController::class, 'updatePSW'])->name('updatePSW.formateur');
+    Route::get('/updatePSW/{id}', [FormateurController::class, 'updatePSW'])->name('updatePSW.fourmateur');
+    
 
 });

@@ -15,13 +15,14 @@ class FormateurController extends Controller
      */
 
     public function returnForm(){
-        $user = User::findOrFail($id);
-        return view('admin.fourmateurs.insertFourmateurs', compact('user'));
+        
+        return view('admin.fourmateurs.insertFourmateurs');
      }
 
     public function updatePSW($id){
+        $user = User::findOrFail($id);
         
-        return view('formateurs.updatePSW');
+        return view('formateurs.updatePSW', compact('user'));
     }
     public function AFOR(){
         

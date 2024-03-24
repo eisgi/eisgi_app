@@ -5,15 +5,13 @@
         <h2>I<span class="danger">S</span>GI</h2>
     </div>
     <div class="navbar">
-        <a href="index.html" class="active">
+        <a href="#" class="active">
             <span class="material-icons-sharp">home</span>
             <h3>Home</h3>
         </a>
         <a href="{{ route('emploi.fourmateur') }}">
             <span class="material-icons-sharp">today</span>
-
-
-        </a>
+     </a>
 
         <a href="#">
             <span class="material-icons-sharp">grid_view</span>
@@ -62,7 +60,7 @@
             </div>
             <div class="button">
                 <input type="submit" value="Save" class="btn">
-                <a href="index.html" class="text-muted">Cancel</a>
+                <a href="#" class="text-muted">Cancel</a>
             </div>
             <a href="#"><p>Forget password?</p></a>
         </form>    

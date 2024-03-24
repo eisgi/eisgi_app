@@ -32,7 +32,7 @@ Main Components
 
 -------------------------------- */
 .cd-schedule {
-  
+
   position: relative;
   margin: 2em 0;
 }
@@ -48,7 +48,7 @@ Main Components
     width: 90%;
     max-width: 1400px;
     margin: 2em auto;
-    
+
   }
 
   .cd-schedule::after {
@@ -342,16 +342,16 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-2"]:hover {
-  background: #639abb;
+  background: rgba(242, 108, 108, 0.979);
 }
 
 .cd-schedule .single-event[data-event="event-3"],
 .cd-schedule [data-event="event-3"] .header-bg {
-  background: rgba(255, 126, 82, 0.918);
+  background: rgba(91, 167, 4, 0.918);
 }
 
 .cd-schedule .single-event[data-event="event-3"]:hover {
-  background: rgba(255, 145, 108, 0.918);
+  background: rgba(242, 108, 108, 0.979);
 }
 
 .cd-schedule .single-event[data-event="event-4"],
@@ -360,7 +360,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-4"]:hover {
-  background: rgba(58, 207, 142, 0.966);
+  background: rgba(242, 108, 108, 0.979);
 }
 
 .cd-schedule .event-modal {

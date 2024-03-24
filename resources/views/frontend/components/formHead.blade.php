@@ -138,5 +138,5 @@
     </div>
 </div>
 
-<script src="{{ asset('style/fourmateurDshboard/timeTable.js') }}"></script>
+
 <script src="{{ asset('style/fourmateurDshboard/app.js') }}"></script>

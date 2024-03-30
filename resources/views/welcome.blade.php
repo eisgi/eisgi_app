@@ -224,7 +224,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-15.jpeg') }})"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-15.jpg') }})"></div>
 </section>
 
 <!-- Slide 3 (#14) -->
@@ -291,7 +291,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-89.jpg') }})"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-95.jpg') }})"></div>
 </section>
 
 <!-- Popup Video -->
@@ -311,60 +311,6 @@
 </div>
 
 
-
-<!-- Slide 5 (#85) -->
-<section class="slide fade-6 kenBurns">
-  <div class="content">
-    <div class="container">
-      <div class="wrap">
-      
-        <div class="fix-7-12">
-          <h1 class="ae-1">Pricing</h1>
-          <ul class="grid grid-85 equal margin-top-5 ae-2 fromCenter" data-equal-collapse-width="767">
-            <li class="col-6-12 col-tablet-1-2 col-phablet-1-1 margin-bottom-2 ae-3">
-              <div class="pad" style="background: #F5FBFE">
-                <h3>Moon</h3>
-                <div class="price ae-5"><span class="currency">$</span>0</div>
-                <div class="ae-5">
-                  <h6 class="uppercase bold small opacity-4">No Credit Card Needed</h6>
-                </div>
-                <div class="margin-top-3 margin-bottom-3 equalElement ae-6">
-                  <ul class="p tiny">
-                    <li><strong>25 Free Images</strong></li>
-                    <li class="opacity-8">Custom Domain</li>
-                    <li class="opacity-8">24/7 Customer Support</li>
-                  </ul>
-                </div>
-                <a href="#" class="button green gradient wide cropSides cropBottom ae-7">Try Free</a>
-              </div>
-            </li>
-            <li class="col-6-12 col-tablet-1-2 col-phablet-1-1 ae-4">
-              <div class="pad">
-                <h3>Planet</h3>
-                <div class="price ae-6"><span class="currency">$</span>6</div>
-                <div class="ae-6">
-                  <h6 class="uppercase bold small opacity-4">Billed per Month</h6>
-                </div>
-                <div class="margin-top-3 margin-bottom-3 equalElement ae-7">
-                  <ul class="p tiny">
-                    <li><strong>60 Free Images</strong></li>
-                    <li><strong>Mobile-Optimized</strong></li>
-                    <li><strong>No Transaction Fees</strong></li>
-                    <li class="opacity-8">Custom Domain</li>
-                    <li class="opacity-8">24/7 Customer Support</li>
-                  </ul>
-                </div>
-                <a href="#" class="button blue gradient wide cropSides cropBottom ae-8">Purchase</a>
-              </div>
-            </li>
-          </ul>
-        </div> 
-        
-      </div>
-    </div>
-  </div>
-  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-85.jpg') }})"></div>
-</section>
 
 <!-- Slide 6 (#95) -->
 <section class="slide fade-6 kenBurns">
@@ -387,7 +333,7 @@
       </div>
     </div>
   </div>
-  <div class="background" style="background-image:url({{ asset('style/home/assets/img/img-95.jpg') }})"></div>
+  <div class="background" style="background-image:url({{ asset('style/home/assets/img/background/img-89.jpg')}})"></div>
 </section>
 
 <!-- Panel Bottom #15 -->

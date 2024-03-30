@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --color-primary: #7380ec;
-    --color-danger: #0066ff;
+    --color-primary: #3776ff;
+    --color-danger: #00aeff;
     --color-success: #41f1b6;
-    --color-warning: #ffbb55;
+    --color-warning: #69ff55;
     --color-white: #fff;
     --color-info: #7d8da1;
     --color-dark: #363949;

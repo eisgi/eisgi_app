@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semaines', function (Blueprint $table) {
-            $table->Increments('idSemaine');
+            $table->id();
             $table->string('codeSemaine')->unique();
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');

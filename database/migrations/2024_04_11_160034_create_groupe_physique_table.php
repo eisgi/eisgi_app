@@ -12,7 +12,7 @@ class CreateGroupePhysiqueTable extends Migration
     public function up()
     {
         Schema::create('groupe_physique', function (Blueprint $table) {
-            $table->increments('idGroupePhysique');
+            $table->id();
             $table->string('codeGroupePhysique')->unique();
             $table->string('libelleGroupe')->unique();
         });

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formateurs__permanents', function (Blueprint $table) {
-            $table->increments('idFMPR');
+            $table->id();
             $table->date('dateRecrutement');
             $table->date('DateDepartRetraite');
             $table->integer('Echelle');

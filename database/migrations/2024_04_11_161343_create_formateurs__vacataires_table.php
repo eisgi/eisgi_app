@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formateurs__vacataires', function (Blueprint $table) {
-            $table->increments('idFMVC');
+            $table->id();
             $table->string('Annee_Experience');
             $table->string('type');
             $table->string('metier');

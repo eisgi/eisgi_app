@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('demande_absences', function (Blueprint $table) {
-            $table->increments('idDemande');
+            $table->id();
             $table->string('Motif');
             $table->date('DateDebut');
             $table->date('DateFin');
             $table->string('matriculeFm');
-            $table->integer('idPA');
+            $table->unsignedBigInteger('idPA');
             $table->foreign('matriculeFm')->references('matricule')->on('formateurs');
-            $table->foreign('idPA')->references('idPA')->on('personnel__administratifs');
+            $table->foreign('idPA')->references('id')->on('personnel__administratifs');
         });
     }
 

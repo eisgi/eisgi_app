@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('justification_abs_s_t_g_s', function (Blueprint $table) {
-            $table->increments('idJustificationSTG');
+            $table->id();
             $table->string('motifJustification');
         });
     }

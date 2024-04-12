@@ -33,9 +33,8 @@ class CreateFormateursTable extends Migration
             $table->decimal('massHorRealiseeAnnuel', 8, 2);
             $table->string('Filiere', 50);
             $table->string('Categorie', 50);
-            $table->integer('codeEtablissement');
-            $table->primary('matricule');
-            $table->foreign('codeEtablissemen')->references('idEtablissement')->on('etablissements');
+            $table->unsignedBigInteger('idEtablissement');
+            $table->foreign('idEtablissement')->references('id')->on('etablissements');
         });
     }
 

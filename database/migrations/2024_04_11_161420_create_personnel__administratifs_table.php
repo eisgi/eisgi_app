@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('personnel__administratifs', function (Blueprint $table) {
-            $table->increments('idPA');
+            $table->id();
             $table->string('Role');
             $table->string('reliquat');
         });

@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('affecter_realjour_d_s', function (Blueprint $table) {
-
-            $table->increments('idAffecRJSnDs');
+        Schema::create('affecter_realjour_p_r', function (Blueprint $table) {
+            $table->increments('idAffecRJSnPr');
             $table->integer('idSemaine');
             $table->integer('idJour');
             $table->integer('idSalle');
             $table->integer('idSeance');
             $table->string('matricule');
             $table->integer('idModule');
-            $table->string('codeGroupeDS',2);
+            $table->string('codeGroupePR',2);
 
 
             $table->decimal('MHRD',1,2);
@@ -29,7 +28,7 @@ return new class extends Migration
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('Seance')->references('ordreSeance')->on('seances');
             $table->foreign('idModule')->references('idModule')->on('modules');
-            $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
+            $table->foreign('codeGroupePR')->references('codeGroupePR')->on('groupe_presentiels');
             $table->foreign('idSalle')->references('idSalle')->on('salles');
             $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
         });
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('affecter_realjour_d_s');
+        Schema::dropIfExists('affecter_realjour_p_r');
     }
 };

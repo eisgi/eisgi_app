@@ -13,8 +13,23 @@ return new class extends Migration
     {
         Schema::create('affecter_heb_d_prs', function (Blueprint $table) {
 
-            $table->string('MHHP', 50);
-            $table->string('CumuleHeurePre', 50);
+            $table->increments('idAffecHebPPr');
+
+
+            $table->integer('idSemaine');
+
+
+            $table->string('matricule');
+            $table->integer('idModule');
+            $table->string('codeGroupePR',2);
+
+            $table->decimal('MHHP', 3,2);
+            $table->decimal('CumuleHeurePre', 10,2);
+
+            $table->foreign('matricule')->references('matricule')->on('formateurs');
+            $table->foreign('idModule')->references('idModule')->on('modules');
+            $table->foreign('codeGroupePR')->references('codeGroupePR')->on('groupe_presentiels');
+            $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
         });
     }
 

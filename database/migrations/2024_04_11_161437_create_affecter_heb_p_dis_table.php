@@ -16,7 +16,7 @@ return new class extends Migration
             $table->UnsignedBigInteger('idSemaine');
             $table->string('matricule');
             $table->UnsignedBigInteger('idModule');
-            $table->string('codeGroupeDS',2);
+            $table->string('codeGroupeDS');
             $table->decimal('MHHD', 3,2);
             $table->decimal('CumuleHeureDist', 10,2);
 
@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idModule')->references('id')->on('modules');
-            $table->foreign('codeGroupeDS')->references('id')->on('groupe_distanciels');
+            $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
             $table->foreign('idSemaine')->references('id')->on('semaines');
         });
     }

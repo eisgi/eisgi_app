@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affectation_prev_heb_generales', function (Blueprint $table) {
-            $table->integer('idAffecHebGen');
-            $table->integer('idAffecHebPDs');
-            $table->integer('idAffecHebPPr');
-            $table->integer('idGroupePhysique');
+            $table->id();
+            $table->UnsignedBigInteger('idAffecHebPDs');
+            $table->UnsignedBigInteger('idAffecHebPPr');
+            $table->UnsignedBigInteger('idGroupePhysique');
             $table->decimal('CumuleTotaleHeb_dist_pre_gen', 10,2);
-            $table->foreign('idGroupePhysique')->references('idGroupePhysique')->on('groupe_physique');
-            $table->foreign('idAffecHebPDs')->references('idAffecHebPD')->on('affecter_heb_p_dis');
-            $table->foreign('idAffecHebPPr')->references('idAffecHebPPr')->on('affecter_heb_d_prs');
+            $table->foreign('idGroupePhysique')->references('id')->on('groupe_physique');
+            $table->foreign('idAffecHebPDs')->references('id')->on('affecter_heb_p_dis');
+            $table->foreign('idAffecHebPPr')->references('id')->on('affecter_heb_d_prs');
         });
     }
 

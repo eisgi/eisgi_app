@@ -12,25 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_realjour_d_s', function (Blueprint $table) {
-            $table->increments('idAffecRJSnDs');
-            $table->integer('idSemaine');
-            $table->integer('idJour');
-            $table->integer('idSalle');
-            $table->integer('idSeance');
+            $table->id();
+            $table->UnsignedBigInteger('idSemaine');
+            $table->UnsignedBigInteger('idJour');
+            $table->UnsignedBigInteger('idSalle');
+            $table->UnsignedBigInteger('idSeance');
             $table->string('matricule');
-            $table->integer('idModule');
-            $table->string('codeGroupeDS', 2);
+            $table->UnsignedBigInteger('idModule');
+            $table->string('codeGroupeDS');
             $table->decimal('MHRD', 1, 2);
 
             $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupeDS'], 'unique_affecter_realjour_d_s');
 
-            $table->foreign('idJour')->references('idJour')->on('jour');
+            $table->foreign('idJour')->references('id')->on('jours');
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idSeance')->references('ordreSeance')->on('seances');
-            $table->foreign('idModule')->references('idModule')->on('modules');
+            $table->foreign('idModule')->references('id')->on('modules');
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
-            $table->foreign('idSalle')->references('idSalle')->on('salles');
-            $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
+            $table->foreign('idSalle')->references('id')->on('salles');
+            $table->foreign('idSemaine')->references('id')->on('semaines');
         });
     }
 

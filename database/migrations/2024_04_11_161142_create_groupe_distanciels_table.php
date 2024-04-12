@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupe_distanciels', function (Blueprint $table) {
-            $table->string('codeGroupeDS',2)->primary();
+            $table->string('codeGroupeDS')->primary();
             $table->string('libelleGroupeDS');
             $table->string('groupeCodeFiliere');
-            $table->foreign('groupeCodeFiliere')->references('codeFiliere')->on('filiere');
+            $table->foreign('groupeCodeFiliere')->references('codeFiliere')->on('filieres');
         });
     }
 

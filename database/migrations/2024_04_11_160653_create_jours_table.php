@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('idJour');
             $table->boolean('is_feriee');
             $table->string('jourSemestre',2);
-            $table->foreign('jourSemestre')->references('idSemestre')->on('semestre');
+            $table->foreign('jourSemestre')->references('idSemestre')->on('semestres');
         });
     }
 

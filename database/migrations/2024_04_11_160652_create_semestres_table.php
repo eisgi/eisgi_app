@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('dateDebutSemestre');
             $table->date('dateFinSemestre');
             $table->string('semestreAnneeFormation', 9);
-            $table->foreign('semestreAnneeFormation')->references('anneeFormation')->on('annee_formation');
+            $table->foreign('semestreAnneeFormation')->references('anneeFormation')->on('annee_formations');
         });
     }
 

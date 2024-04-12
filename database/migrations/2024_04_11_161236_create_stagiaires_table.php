@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->increments('idStagiaire');
-            $table->string('nom', 50);
-            $table->string('prenom', 50);
-            $table->string('noteAssiduite', 50);
+            $table->string('nomStagiaire');
+            $table->string('prenomStagiaire');
+            $table->decimal('noteAssiduite',2,2);
             $table->string('nbrAbsenceNonJusitifie', 50);
-            $table->string('numInscription', 50)->unique();
-            $table->string('nbrSanctions', 50);
+            $table->string('numInscription')->unique();
+            $table->integer('nbrSanctions');
             $table->integer('idGroupePhysique');
             $table->foreign('idGroupePhysique')->references('idGroupePhysique')->on('groupe_physique');
         });

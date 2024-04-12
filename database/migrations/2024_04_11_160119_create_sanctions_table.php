@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sanctions', function (Blueprint $table) {
-            $table->increments('idSanction', 50);
-            $table->string('libelleSanction', 50);
+            $table->increments('idSanction');
+            $table->string('libelleSanction');
             $table->decimal('Point', 2, 2);
         });
     }

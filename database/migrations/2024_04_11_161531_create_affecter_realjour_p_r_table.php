@@ -12,25 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_realjour_p_r', function (Blueprint $table) {
-            $table->increments('idAffecRJSnPr');
-            $table->integer('idSemaine');
-            $table->integer('idJour');
-            $table->integer('idSalle');
-            $table->integer('idSeance');
+            $table->id();
+            $table->UnsignedBigInteger('idSemaine');
+            $table->UnsignedBigInteger('idJour');
+            $table->UnsignedBigInteger('idSalle');
+            $table->UnsignedInteger('idSeance');
             $table->string('matricule');
-            $table->integer('idModule');
-            $table->string('codeGroupePR', 2);
-            $table->decimal('MHRD', 1, 2);
+            $table->UnsignedBigInteger('idModule');
+            $table->string('codeGroupePR');
+            $table->decimal('MHRD', 2, 2);
 
-            $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupePR'], 'unique_affecter_realjour_p_r');
+            $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupePR'], 'unique_affecter_realjour_d_s');
 
-            $table->foreign('idJour')->references('iJour')->on('jour');
+            $table->foreign('idJour')->references('id')->on('jours');
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idSeance')->references('ordreSeance')->on('seances');
-            $table->foreign('idModule')->references('idModule')->on('modules');
+            $table->foreign('idModule')->references('id')->on('modules');
             $table->foreign('codeGroupePR')->references('codeGroupePR')->on('groupe_presentiels');
-            $table->foreign('idSalle')->references('idSalle')->on('salles');
-            $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
+            $table->foreign('idSalle')->references('id')->on('salles');
+            $table->foreign('idSemaine')->references('id')->on('semaines');
         });
     }
 

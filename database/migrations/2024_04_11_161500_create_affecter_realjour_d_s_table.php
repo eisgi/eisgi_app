@@ -16,11 +16,11 @@ return new class extends Migration
             $table->UnsignedBigInteger('idSemaine');
             $table->UnsignedBigInteger('idJour');
             $table->UnsignedBigInteger('idSalle');
-            $table->UnsignedBigInteger('idSeance');
+            $table->UnsignedInteger('idSeance');
             $table->string('matricule');
             $table->UnsignedBigInteger('idModule');
             $table->string('codeGroupeDS');
-            $table->decimal('MHRD', 1, 2);
+            $table->decimal('MHRD', 2, 2);
 
             $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupeDS'], 'unique_affecter_realjour_d_s');
 

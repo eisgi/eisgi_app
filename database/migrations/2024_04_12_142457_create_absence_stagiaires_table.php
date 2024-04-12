@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absence_stagiaires', function (Blueprint $table) {
-            $table->increments('idAS');
-            $table->integer('idJustification');
-            $table->integer('idAffectJrSnDs');
+            $table->id();
+            $table->UnsignedBigInteger('idJustification');
+            $table->UnsignedBigInteger('idAffectJrSnDs');
+            $table->UnsignedBigInteger('idAffectJrSnPr');
             $table->decimal('HeuresAbsentees',2,2);
-            $table->integer('idJustificationSTG');
-            $table->foreign('idJustificationSTG')->references('idJustificationSTG')->on('justification_abs_s_t_g_s');
-            $table->foreign('idAffectJrSnPr')->references('idAffectJrSnPr')->on('affecter_realjour_p_r');
-            $table->foreign('idAffectJrSnDs')->references('idAffectJrSnDs')->on('affecter_realjour_d_s');
+            $table->UnsignedBigInteger('idJustificationSTG');
+            $table->foreign('idJustificationSTG')->references('id')->on('justification_abs_s_t_g_s');
+            $table->foreign('idAffectJrSnPr')->references('id')->on('affecter_realjour_p_r');
+            $table->foreign('idAffectJrSnDs')->references('id')->on('affecter_realjour_d_s');
 
         });
     }

@@ -12,20 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affectations_FORMODGR', function (Blueprint $table) {
-            $table->increments('idEFM');
+            $table->id();
             $table->string('semaineAnneeFormation', 9);
             $table->string('matricule');
-            $table->integer('idModule');
-            $table->integer('idGroupePhysique');
+            $table->UnsignedBigInteger('idModule');
+            $table->UnsignedBigInteger('idGroupePhysique');
             $table->date('dateEFMPre');
             $table->date('dateEFMReal');
 
             $table->unique(['semaineAnneeFormation', 'matricule', 'idModule', 'idGroupePhysique'], 'unique_affectations');
 
             $table->foreign('matricule')->references('matricule')->on('formateurs');
-            $table->foreign('idModule')->references('idModule')->on('modules');
-            $table->foreign('semaineAnneeFormation')->references('anneeFormation')->on('annee_formation');
-            $table->foreign('idGroupePhysique')->references('idGroupePhysique')->on('groupe_physique');
+            $table->foreign('idModule')->references('id')->on('modules');
+            $table->foreign('semaineAnneeFormation')->references('anneeFormation')->on('annee_formations');
+            $table->foreign('idGroupePhysique')->references('id')->on('groupe_physique');
         });
     }
 

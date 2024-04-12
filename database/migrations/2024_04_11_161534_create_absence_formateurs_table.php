@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absence_formateurs', function (Blueprint $table) {
-            $table->increments('idAbsFM');
-            $table->integer('idAffectJrSnPr');
-            $table->integer('idAffectJrSnDs');
+            $table->id();
+            $table->UnsignedBigInteger('idAffectJrSnPr');
+            $table->UnsignedBigInteger('idAffectJrSnDs');
             $table->decimal('HeuresAbsentees',2,2);
-            $table->integer('idJustification');
-            $table->foreign('idJustificationAFM')->references('idJustificationAFM')->on('justification_abs_frm');
-            $table->foreign('idAffectJrSnPr')->references('idAffectJrSnPr')->on('affecter_realjour_p_r');
-            $table->foreign('idAffectJrSnDs')->references('idAffectJrSnDs')->on('affecter_realjour_d_s');
+            $table->UnsignedBigInteger('idJustificationAFM');
+            $table->foreign('idJustificationAFM')->references('id')->on('justification_abs_f_r_m_s');
+            $table->foreign('idAffectJrSnPr')->references('id')->on('affecter_realjour_p_r');
+            $table->foreign('idAffectJrSnDs')->references('id')->on('affecter_realjour_d_s');
 
 
         });

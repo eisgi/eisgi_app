@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_heb_p_dis', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('matricule', 50);
+            $table->integer('id');
+            $table->string('libelleGroupe', 50);
+            $table->smallInteger('id_1');
+            $table->string('MHHD', 50);
+            $table->string('CumuleHeureDist', 50);
+            $table->primary(['matricule', 'id', 'libelleGroupe', 'id_1']);
+            $table->foreign('matricule')->references('matricule')->on('formateurs');
+            $table->foreign('id')->references('id')->on('modules');
+            $table->foreign('libelleGroupe')->references('libelleGroupe')->on('groupe_distanciel');
+            $table->foreign('id_1')->references('id')->on('semaine');
         });
     }
 

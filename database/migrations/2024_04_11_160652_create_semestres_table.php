@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semestres', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('idSemestre',2)->primary();
+            $table->date('dateDebutSemestre');
+            $table->date('dateFinSemestre');
+            $table->string('semestreAnneeFormation', 9);
+            $table->foreign('semestreAnneeFormation')->references('anneeFormation')->on('annee_formation');
         });
     }
 

@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('affectation_real_jour_seance_generales', function (Blueprint $table) {
+        Schema::create('affectation_real_jour_seance_generale', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('CumuleTotaleJour_dist_pre', 50);
+            $table->string('libelleGroupePhysique', 50);
+            $table->foreign('libelleGroupePhysique')->references('libelleGroupe')->on('groupe_physique');
         });
     }
 

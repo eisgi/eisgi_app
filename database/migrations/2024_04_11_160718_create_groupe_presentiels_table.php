@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupe_presentiels', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('codeGroupePR')->primary();
+            $table->string('libelleGroupePR');
+            $table->string('groupeCodeFiliere');
+            $table->foreign('groupeCodeFiliere')->references('codeFiliere')->on('filiere');
         });
     }
 

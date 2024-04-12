@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('absence_formateurs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('id')->primary();
+            $table->string('idAffectJr', 50);
+            $table->string('HeuresAbsentees', 50);
+            $table->string('idJustification', 50);
+            $table->foreign('idJustification')->references('idJustification')->on('justification_abs_frm');
+       
         });
     }
 

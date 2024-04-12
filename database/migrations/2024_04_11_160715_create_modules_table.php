@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('codeModule');
+            $table->string('libelleModule', 100);
+            $table->unsignedMediumInteger('ordreModule');
+
+            $table->decimal('MHT', 8, 2);
+            $table->unsignedInteger('Coef');
+            $table->boolean('EFM_Regional')->default(false);
+
+            $table->string('filiereModule');
+            $table->foreign('filiereModule')->references('codeFiliere')->on('filieres')->onDelete('cascade');
+            $table->string('semestreModule', 2);
+            $table->foreign('semestreModule')->references('idSemestre')->on('semestres')->onDelete('cascade');
         });
     }
 

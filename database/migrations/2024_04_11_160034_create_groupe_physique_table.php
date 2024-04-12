@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('groupe_physiques', function (Blueprint $table) {
+        Schema::create('groupe_physique', function (Blueprint $table) {
             $table->increments('idGroupePhysique');
             $table->string('codeGroupePhysique')->unique();
             $table->string('libelleGroupe', 50)->unique();

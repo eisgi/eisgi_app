@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('seances', function (Blueprint $table) {
-            $table->number('ordreSeance')->primary();
+            $table->integer('ordreSeance')->primary();
         });
     }
 

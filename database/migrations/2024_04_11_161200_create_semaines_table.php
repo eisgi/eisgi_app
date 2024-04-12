@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semaines', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->string('codeSemaine', 50);
+            $table->Increments('idSemaine');
+            $table->string('codeSemaine')->unique();
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');
             $table->string('Emploi');

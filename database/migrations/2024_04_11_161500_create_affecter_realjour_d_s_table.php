@@ -12,22 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_realjour_d_s', function (Blueprint $table) {
-            $table->string('id', 50);
-            $table->string('matricule', 50);
-            $table->string('ordreSeance', 50);
-            $table->integer('id_1');
-            $table->string('libelleGroupe', 50);
-            $table->smallInteger('id_2');
-            $table->string('nomSalle', 50);
-            $table->string('MHRD', 50);
-            $table->primary(['id', 'matricule', 'ordreSeance', 'id_1', 'libelleGroupe', 'id_2', 'nomSalle']);
-            $table->foreign('id')->references('id')->on('jour');
+
+            $table->increments('idAffecRJSnDs');
+            $table->integer('idSemaine');
+            $table->integer('idJour');
+            $table->integer('idSalle');
+            $table->integer('idSeance');
+            $table->string('matricule');
+            $table->integer('idModule');
+            $table->string('codeGroupeDS',2);
+
+
+            $table->decimal('MHRD',1,2);
+
+            $table->foreign('idJour')->references('iJour')->on('jour');
             $table->foreign('matricule')->references('matricule')->on('formateurs');
-            $table->foreign('ordreSeance')->references('ordreSeance')->on('seance');
-            $table->foreign('id_1')->references('id')->on('modules');
-            $table->foreign('libelleGroupe')->references('libelleGroupe')->on('groupe_distanciel');
-            $table->foreign('id_2')->references('id')->on('semaine');
-            $table->foreign('nomSalle')->references('nomSalle')->on('salle');
+            $table->foreign('Seance')->references('ordreSeance')->on('seances');
+            $table->foreign('idModule')->references('idModule')->on('modules');
+            $table->foreign('codeGroupeDs')->references('codeGroupeDS')->on('groupe_distanciel');
+            $table->foreign('idSalle')->references('idSalle')->on('salles');
+            $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
         });
     }
 

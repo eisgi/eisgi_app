@@ -19,14 +19,14 @@ return new class extends Migration
             $table->integer('idSeance');
             $table->string('matricule');
             $table->integer('idModule');
-            $table->string('codeGroupePR',2);
+            $table->string('codeGroupePR', 2);
+            $table->decimal('MHRD', 1, 2);
 
-
-            $table->decimal('MHRD',1,2);
+            $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupePR'], 'unique_affecter_realjour_p_r');
 
             $table->foreign('idJour')->references('iJour')->on('jour');
             $table->foreign('matricule')->references('matricule')->on('formateurs');
-            $table->foreign('Seance')->references('ordreSeance')->on('seances');
+            $table->foreign('idSeance')->references('ordreSeance')->on('seances');
             $table->foreign('idModule')->references('idModule')->on('modules');
             $table->foreign('codeGroupePR')->references('codeGroupePR')->on('groupe_presentiels');
             $table->foreign('idSalle')->references('idSalle')->on('salles');

@@ -12,19 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_heb_d_prs', function (Blueprint $table) {
-
             $table->increments('idAffecHebPPr');
-
-
             $table->integer('idSemaine');
-
-
             $table->string('matricule');
             $table->integer('idModule');
-            $table->string('codeGroupePR',2);
+            $table->string('codeGroupePR', 2);
+            $table->decimal('MHHP', 3, 2);
+            $table->decimal('CumuleHeurePre', 10, 2);
 
-            $table->decimal('MHHP', 3,2);
-            $table->decimal('CumuleHeurePre', 10,2);
+            $table->unique(['idSemaine', 'matricule', 'idModule', 'codeGroupePR'], 'unique_affecter_heb_d_prs');
 
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idModule')->references('idModule')->on('modules');

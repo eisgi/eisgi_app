@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('matricule');
             $table->integer('idModule');
             $table->integer('idGroupePhysique');
-
             $table->date('dateEFMPre');
             $table->date('dateEFMReal');
+
+            $table->unique(['semaineAnneeFormation', 'matricule', 'idModule', 'idGroupePhysique'], 'unique_affectations');
 
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idModule')->references('idModule')->on('modules');
@@ -36,3 +37,4 @@ return new class extends Migration
         Schema::dropIfExists('affectations_FORMODGR');
     }
 };
+

@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_realjour_d_s', function (Blueprint $table) {
-
             $table->increments('idAffecRJSnDs');
             $table->integer('idSemaine');
             $table->integer('idJour');
@@ -20,14 +19,14 @@ return new class extends Migration
             $table->integer('idSeance');
             $table->string('matricule');
             $table->integer('idModule');
-            $table->string('codeGroupeDS',2);
+            $table->string('codeGroupeDS', 2);
+            $table->decimal('MHRD', 1, 2);
 
+            $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupeDS'], 'unique_affecter_realjour_d_s');
 
-            $table->decimal('MHRD',1,2);
-
-            $table->foreign('idJour')->references('iJour')->on('jour');
+            $table->foreign('idJour')->references('idJour')->on('jour');
             $table->foreign('matricule')->references('matricule')->on('formateurs');
-            $table->foreign('Seance')->references('ordreSeance')->on('seances');
+            $table->foreign('idSeance')->references('ordreSeance')->on('seances');
             $table->foreign('idModule')->references('idModule')->on('modules');
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
             $table->foreign('idSalle')->references('idSalle')->on('salles');

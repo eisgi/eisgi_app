@@ -15,9 +15,12 @@ return new class extends Migration
             $table->increments('idAbsFM');
             $table->integer('idAffectJrSnPr');
             $table->integer('idAffectJrSnDs');
-            $table->string('HeuresAbsentees');
+            $table->decimal('HeuresAbsentees',2,2);
             $table->integer('idJustification');
             $table->foreign('idJustificationAFM')->references('idJustificationAFM')->on('justification_abs_frm');
+            $table->foreign('idAffectJrSnPr')->references('idAffectJrSnPr')->on('affecter_realjour_p_r');
+            $table->foreign('idAffectJrSnDs')->references('idAffectJrSnDs')->on('affecter_realjour_d_s');
+
 
         });
     }

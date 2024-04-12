@@ -29,7 +29,7 @@ return new class extends Migration
 
             $table->foreign('matricule')->references('matricule')->on('formateurs');
             $table->foreign('idModule')->references('idModule')->on('modules');
-            $table->foreign('codeGroupeDs')->references('codeGroupeDS')->on('groupe_distanciel');
+            $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
             $table->foreign('idSemaine')->references('idSemaine')->on('semaines');
 
         });

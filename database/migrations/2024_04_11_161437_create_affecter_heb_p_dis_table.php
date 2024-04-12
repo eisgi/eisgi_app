@@ -12,10 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_heb_p_dis', function (Blueprint $table) {
-            $table->string('matricule', 50);
-            $table->integer('id');
-            $table->string('libelleGroupe', 50);
-            $table->smallInteger('id_1');
             $table->string('MHHD', 50);
             $table->string('CumuleHeureDist', 50);
             $table->primary(['matricule', 'id', 'libelleGroupe', 'id_1']);

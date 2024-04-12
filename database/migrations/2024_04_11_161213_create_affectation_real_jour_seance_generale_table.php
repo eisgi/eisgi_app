@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('affectation_real_jour_seance_generales');
+        Schema::dropIfExists('affectation_real_jour_seance_generale');
     }
 };

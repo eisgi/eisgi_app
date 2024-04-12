@@ -12,17 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('demande_conges', function (Blueprint $table) {
-            $table->string('idConge', 50)->primary();
-            $table->string('statut', 50);
-            $table->string('dateDebutConge', 50);
-            $table->string('dateFinConge', 50);
-            $table->string('durreeConge', 50);
-            $table->integer('id');
-            $table->string('idTypeConge', 50);
-            $table->integer('id_1');
-            $table->foreign('id')->references('id')->on('formateurs_permanents');
-            $table->foreign('idTypeConge')->references('idTypeConge')->on('type_conge');
-            $table->foreign('id_1')->references('id')->on('personnel_administratif');
+            $table->increments('idDmConge');
+            $table->string('statut');
+            $table->date('dateDebutConge');
+            $table->date('dateFinConge');
+            $table->string('durreeConge');
+
+            $table->integer('idFMPR');
+            $table->integer('idPA');
+            $table->integer('idTypeConge');
+
+            $table->foreign('idFMPR')->references('id')->on('formateurs_permanents');
+            $table->foreign('idPA')->references('idTypeConge')->on('type_conge');
+            $table->foreign('idTypeConge')->references('id')->on('personnel_administratif');
         });
     }
 

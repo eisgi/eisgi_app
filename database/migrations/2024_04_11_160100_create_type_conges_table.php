@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('type_conges', function (Blueprint $table) {
-            $table->increments('idTypeConge')->primary();
-            $table->string('TypeConge', 50);
-            $table->string('MotifConge', 50);
+            $table->increments('idTypeConge');
+            $table->string('TypeConge');
+            $table->string('MotifConge');
         });
     }
 

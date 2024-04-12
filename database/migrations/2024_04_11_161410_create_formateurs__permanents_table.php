@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formateurs__permanents', function (Blueprint $table) {
-            $table->integer('id')->primary();
-    $table->date('dateRecrutement');
-    $table->date('DateDepartRetraite');
-    $table->integer('Echelle');
-    $table->string('Echelon', 50);
-    $table->string('Grade', 50);
-    $table->string('matricule', 50);
-    $table->foreign('matricule')->references('matricule')->on('formateurs');
+            $table->increments('idFMPR');
+            $table->date('dateRecrutement');
+            $table->date('DateDepartRetraite');
+            $table->integer('Echelle');
+            $table->string('Echelon');
+            $table->string('Grade');
+            $table->string('matriculeFm');
+            $table->foreign('matriculeFm')->references('matricule')->on('formateurs');
         });
     }
 

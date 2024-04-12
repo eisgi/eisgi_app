@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('modules', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('id')->primary();
+            $table->string('codeModule', 50);
+            $table->string('libelleModule', 50);
+            $table->tinyInteger('ordreModule');
+            $table->decimal('MHT', 8, 2);
+            $table->tinyInteger('Coef');
+            $table->boolean('EFM_Regional');
+            $table->integer('codeFiliere');
+            $table->foreign('codeFiliere')->references('codeFiliere')->on('filiere');
         });
     }
 

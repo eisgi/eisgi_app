@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('justification_abs_f_r_m_s', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamps();$table->string('idJustification', 50)->primary();
+            $table->string('motifJustification', 50);
         });
     }
 

@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupe_distanciels', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('libelleGroupe', 50)->primary();
+    $table->integer('codeFiliere');
+    $table->foreign('codeFiliere')->references('codeFiliere')->on('filiere');
         });
     }
 

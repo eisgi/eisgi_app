@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('realiser_e_f_m_s', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('matricule', 50);
+    $table->integer('id');
+    $table->string('libelleGroupe', 50);
+    $table->date('dateEFMPre');
+    $table->string('dateEFMReal', 50);
+    $table->primary(['matricule', 'id', 'libelleGroupe']);
+    $table->foreign('matricule')->references('matricule')->on('formateurs');
+    $table->foreign('id')->references('id')->on('modules');
+    $table->foreign('libelleGroupe')->references('libelleGroupe')->on('groupe_physique');
         });
     }
 

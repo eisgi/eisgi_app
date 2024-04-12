@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('justification_abs_s_t_g_s', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('idJustification', 50)->primary();
+            $table->string('motifJustification', 50);
         });
     }
 

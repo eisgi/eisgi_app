@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('etablissements', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('idEtablissement', 50)->primary();
+    $table->string('NomEtablissement', 50);
+    $table->string('Adresse', 50);
+    $table->integer('idComplexe');
+    $table->foreign('idComplexe')->references('idComplexe')->on('complexe');
         });
     }
 

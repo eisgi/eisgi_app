@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('type_conges', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('idTypeConge', 50)->primary();
+    $table->string('TypeConge', 50);
+    $table->string('MotifConge', 50);
         });
     }
 

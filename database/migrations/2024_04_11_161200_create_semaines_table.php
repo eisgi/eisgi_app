@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('semaines', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->smallIncrements('id');
+    $table->string('codeSemaine', 50);
+    $table->date('dateDebutSemaine');
+    $table->date('dateFinSemaine');
+    $table->string('Emploi', 225);
+    $table->integer('idSemestre');
+    $table->foreign('idSemestre')->references('idSemestre')->on('semestre');
         });
     }
 

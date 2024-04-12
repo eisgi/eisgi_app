@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jours', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('id', 50)->primary();
+            $table->boolean('is_feriee');
+            $table->smallInteger('id_1');
+            $table->foreign('id_1')->references('idSemestre')->on('semestre');
         });
     }
 

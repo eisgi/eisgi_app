@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupe_physiques', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('libelleGroupe', 50)->primary();
         });
     }
 

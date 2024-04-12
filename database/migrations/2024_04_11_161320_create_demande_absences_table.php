@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('demande_absences', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('idDemande', 50)->primary();
+            $table->string('Motif', 50);
+            $table->date('DateDebut');
+            $table->date('DateFin');
+            $table->string('matricule', 50);
+            $table->foreign('matricule')->references('matricule')->on('formateurs');
         });
     }
 

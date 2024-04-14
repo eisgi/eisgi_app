@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('codeSemaine')->unique();
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');
-            $table->string('Emploi');
+            $table->string('Emploi')->nullable();
             $table->string('semestreSemaine',2);
             $table->foreign('semestreSemaine')->references('idSemestre')->on('semestres');
             $table->string('semaineAnneeFormation', 9);

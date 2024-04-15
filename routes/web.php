@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FiliereController;
@@ -12,11 +13,16 @@ use App\Http\Controllers\CsvImportController;
 use App\Http\Controllers\CsvImportFourmateur;
 use App\Http\Controllers\SemaineController;
 use App\Http\Controllers\EmploiController;
+=======
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 ////////////////////////////////////////////////////////
 
 Route::get('/login', [LoginController::class,'showLoginForm'])->name('login');
@@ -50,3 +56,16 @@ Route::prefix('fourmateur')->group(function () {
     
 
 });
+=======
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de

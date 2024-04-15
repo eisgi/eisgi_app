@@ -1,14 +1,29 @@
 {
     "private": true,
+<<<<<<< HEAD
+=======
+    "type": "module",
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
     "scripts": {
         "dev": "vite",
         "build": "vite build"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.2",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "vite": "^4.0.0"
+=======
+        "@tailwindcss/forms": "^0.5.2",
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.4.2",
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.31",
+        "tailwindcss": "^3.1.0",
+        "vite": "^5.0"
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
     }
 }

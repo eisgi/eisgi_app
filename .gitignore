@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/.phpunit.cache
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
 /node_modules
 /public/build
 /public/hot
@@ -16,5 +20,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+<<<<<<< HEAD
 composer.json
 composer.lock
+=======
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de

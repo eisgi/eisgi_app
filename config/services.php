@@ -14,6 +14,7 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -21,6 +22,8 @@ return [
         'scheme' => 'https',
     ],
 
+=======
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
@@ -31,4 +34,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+<<<<<<< HEAD
+=======
+    'slack' => [
+        'notifications' => [
+            'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
+            'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
+        ],
+    ],
+
+>>>>>>> e0e52116a513c334aa5bf04915070437adae30de
 ];

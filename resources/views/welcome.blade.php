@@ -6,7 +6,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	<!-- Page Title -->
-	<title>E-isgi</title>
+	<title>E isgi</title>
 
 	<!-- Compressed Styles -->
 	<link href="{{ asset('style/home/css/slides.min.css?41331') }}" rel="stylesheet" type="text/css">

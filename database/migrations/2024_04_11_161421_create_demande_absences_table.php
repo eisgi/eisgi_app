@@ -17,9 +17,9 @@ return new class extends Migration
             $table->date('DateDebut');
             $table->date('DateFin');
             $table->string('matriculeFm');
-            $table->unsignedBigInteger('idPA');
+            $table->string('matriculePA');
             $table->foreign('matriculeFm')->references('matricule')->on('formateurs');
-            $table->foreign('idPA')->references('id')->on('personnel__administratifs');
+            $table->foreign('matriculePA')->references('matricule')->on('personnel__administratifs');
         });
     }
 

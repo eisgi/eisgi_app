@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('groupe_presentiels', function (Blueprint $table) {
             $table->string('codeGroupePR')->primary();
             $table->string('libelleGroupePR');
-            $table->string('groupeCodeFiliere');
-            $table->foreign('groupeCodeFiliere')->references('codeFiliere')->on('filieres');
+            $table->string('groupeCodeOptionFiliere');
+            $table->foreign('groupeCodeOptionFiliere')
+                ->references('codeOptionFiliere')
+                ->on('option_filieres')
+                ->onDelete('cascade');
         });
     }
 

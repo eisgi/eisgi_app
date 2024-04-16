@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('groupe_distanciels', function (Blueprint $table) {
             $table->string('codeGroupeDS')->primary();
             $table->string('libelleGroupeDS');
-            $table->string('groupeCodeFiliere');
-            $table->foreign('groupeCodeFiliere')->references('codeFiliere')->on('filieres');
+            $table->string('groupeCodeOptionFiliere');
+            $table->foreign('groupeCodeOptionFiliere')
+                ->references('codeOptionFiliere')
+                ->on('option_filieres')
+                ->onDelete('cascade');
         });
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OptionFiliere\OptionFiliereImportController;
 use App\Http\Controllers\Admin\Complexe\ComplexeImportController;
 use App\Http\Controllers\Admin\Etablissement\EtablissementImportController;
 use App\Http\Controllers\Admin\Formateur\FormateurImportController;
+use App\Http\Controllers\Admin\Module\ModuleImportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +44,10 @@ Route::prefix('admin')->group(function () {
     Route::prefix('formateur')->group(function () {
         Route::get('/formimport', [FormateurImportController::class, 'showForm'])->name('importformateurform');
         Route::post('/import', [FormateurImportController::class, 'import'])->name('importformateuraction');
+    });
+    Route::prefix('module')->group(function () {
+        Route::get('/formimport', [ModuleImportController::class, 'showForm'])->name('importmoduleform');
+        Route::post('/import', [ModuleImportController::class, 'import'])->name('importmoduleaction');
     });
 });
 

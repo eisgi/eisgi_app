@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Filiere\ImportFiliereController;
 use App\Http\Controllers\Admin\OptionFiliere\OptionFiliereImportController;
 use App\Http\Controllers\Admin\Complexe\ComplexeImportController;
+use App\Http\Controllers\Admin\Etablissement\EtablissementImportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,10 @@ Route::prefix('admin')->group(function () {
     Route::prefix('complexe')->group(function () {
         Route::get('/formimport', [ComplexeImportController::class, 'showForm'])->name('importcomplexeform');
         Route::post('/import', [ComplexeImportController::class, 'import'])->name('importcomplexeeaction');
+    });
+    Route::prefix('etablissement')->group(function () {
+        Route::get('/formimport', [EtablissementImportController::class, 'showForm'])->name('importetablissementform');
+        Route::post('/import', [EtablissementImportController::class, 'import'])->name('importetablissementaction');
     });
 });
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->string('codeModule')->unique();
+            $table->string('codeModule');
             $table->string('libelleModule', 100);
             $table->unsignedMediumInteger('ordreModule');
 

@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Complexe extends Model
 {
-    use HasFactory;
+    protected $table = 'complexes';
+
+    protected $fillable = [
+        'nomComplexe',
+    ];
+
+    public $timestamps = false;
 }

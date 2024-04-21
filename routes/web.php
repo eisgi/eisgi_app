@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Filiere\ImportFiliereController;
 use App\Http\Controllers\Admin\OptionFiliere\OptionFiliereImportController;
+use App\Http\Controllers\Admin\Complexe\ComplexeImportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +29,10 @@ Route::prefix('admin')->group(function () {
     Route::prefix('optionfiliere')->group(function () {
         Route::get('/formimport', [OptionFiliereImportController::class, 'showForm'])->name('importoptionfiliereform');
         Route::post('/import', [OptionFiliereImportController::class, 'import'])->name('importoptionfiliereaction');
+    });
+    Route::prefix('complexe')->group(function () {
+        Route::get('/formimport', [ComplexeImportController::class, 'showForm'])->name('importcomplexeform');
+        Route::post('/import', [ComplexeImportController::class, 'import'])->name('importcomplexeeaction');
     });
 });
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Filiere\ImportFiliereController;
+use App\Http\Controllers\Admin\OptionFiliere\OptionFiliereImportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,10 @@ Route::prefix('admin')->group(function () {
     Route::prefix('filiere')->group(function () {
         Route::get('/formimport', [ImportFiliereController::class, 'showForm'])->name('importfiliereform');
         Route::post('/import', [ImportFiliereController::class, 'import'])->name('importfiliereaction');
+    });
+    Route::prefix('optionfiliere')->group(function () {
+        Route::get('/formimport', [OptionFiliereImportController::class, 'showForm'])->name('importoptionfiliereform');
+        Route::post('/import', [OptionFiliereImportController::class, 'import'])->name('importoptionfiliereaction');
     });
 });
 

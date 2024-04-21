@@ -15,10 +15,7 @@ return new class extends Migration
             $table->string('codeGroupeDS')->primary();
             $table->string('libelleGroupeDS');
             $table->string('groupeCodeOptionFiliere');
-            $table->foreign('groupeCodeOptionFiliere')
-                ->references('codeOptionFiliere')
-                ->on('option_filieres')
-                ->onDelete('cascade');
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade');
         });
     }
 

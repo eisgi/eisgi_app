@@ -21,12 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('Coef');
             $table->boolean('EFM_Regional')->default(false);
 
-            $table->string('groupeCodeOptionFiliere');
-            $table->foreign('groupeCodeOptionFiliere')
-                ->references('codeOptionFiliere')
-                ->on('option_filieres')
-                ->onDelete('cascade');
-
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade');
 
             $table->string('semestreModule', 2);
             $table->foreign('semestreModule')->references('idSemestre')->on('semestres')->onDelete('cascade');

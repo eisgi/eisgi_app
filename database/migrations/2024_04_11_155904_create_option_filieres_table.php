@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('option_filieres', function (Blueprint $table) {
-            $table->string('codeOptionFiliere')->primary();
+            $table->id();
+
+            $table->string('codeOptionFiliere');
             $table->string('libelleOptionFiliere');
-            $table->string('codeFiliere'); 
+            $table->enum('annee',['1A','2A','3A']);
+            $table->string('codeFiliere');
 
             $table->foreign('codeFiliere')
                 ->references('codeFiliere')

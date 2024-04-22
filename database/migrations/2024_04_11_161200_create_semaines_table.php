@@ -17,8 +17,7 @@ return new class extends Migration
             $table->date('dateDebutSemaine');
             $table->date('dateFinSemaine');
             $table->string('Emploi')->nullable();
-            $table->string('semestreSemaine',2);
-            $table->foreign('semestreSemaine')->references('idSemestre')->on('semestres');
+            $table->foreignId('idSemestre')->constrained('semestres')->onDelete('cascade');
             $table->string('semaineAnneeFormation', 9);
             $table->foreign('semaineAnneeFormation')->references('anneeFormation')->on('annee_formations');
         });

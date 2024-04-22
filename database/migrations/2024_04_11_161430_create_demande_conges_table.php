@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('durreeConge');
 
             $table->unsignedBigInteger('idFMPR');
-            $table->unsignedBigInteger('idPA');
+            $table->string('matriculePA');
             $table->unsignedBigInteger('idTypeConge');
 
             $table->foreign('idFMPR')->references('id')->on('formateurs__permanents');
             $table->foreign('idTypeConge')->references('id')->on('type_conges');
-            $table->foreign('idPA')->references('id')->on('personnel__administratifs');
+            $table->foreign('matriculePA')->references('matricule')->on('personnel__administratifs');
         });
     }
 

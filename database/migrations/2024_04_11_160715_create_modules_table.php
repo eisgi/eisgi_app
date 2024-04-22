@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->string('codeModule')->unique();
+            $table->string('codeModule');
             $table->string('libelleModule', 100);
             $table->unsignedMediumInteger('ordreModule');
 
@@ -21,10 +21,9 @@ return new class extends Migration
             $table->unsignedInteger('Coef');
             $table->boolean('EFM_Regional')->default(false);
 
-            $table->string('filiereModule');
-            $table->foreign('filiereModule')->references('codeFiliere')->on('filieres')->onDelete('cascade');
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade');
+
             $table->string('semestreModule', 2);
-            $table->foreign('semestreModule')->references('idSemestre')->on('semestres')->onDelete('cascade');
         });
     }
 

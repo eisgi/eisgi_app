@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Formateur;
+namespace App\Http\Controllers\Admin\Salle;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Formateur;
-use App\Models\Etablissement;
+use App\Models\Salle;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use Carbon\Carbon;
 
-class FormateurImportController extends Controller
+class SalleImportController extends Controller
 {
     public function showForm()
     {
-        return view('admin.formateur.formateurimportform');
+        return view('admin.salle.salleimportform');
     }
 
     public function import(Request $request)
@@ -56,37 +54,10 @@ class FormateurImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
-                //jib lclé 3ad inseriha
-
-                $etablissement=Etablissement::where('NomEtablissement',$rowData[19])->first();
-
-                // Convertir les dates en utilisant strtotime
-                $rowData[8] = date('Y-m-d', strtotime($rowData[8]));
-                $rowData[9] = date('Y-m-d', strtotime($rowData[9]));
-                $rowData[10] = date('Y-m-d', strtotime($rowData[10]));
-
-                // Créer une nouvelle instance de Formateur et la sauvegarder dans la base de données
-                Formateur::create([
-                    'matricule' => $rowData[0],
-                    'password' => $rowData[1],
-                    'nom' => $rowData[2],
-                    'prenom' => $rowData[3],
-                    'numTel' => $rowData[4],
-                    'civilite' => $rowData[5],
-                    'Echelle' => $rowData[6],
-                    'Echelon' => $rowData[7],
-                    'Date_Recrutement' => $rowData[8],
-                    'Date_Depart_Retrait' => $rowData[9],
-                    'dateNaissance' => $rowData[10],
-                    'Adresse' => $rowData[11],
-                    'Grade' => $rowData[12],
-                    'Diplome' => $rowData[13],
-                    'situationFamiliale' => $rowData[14],
-                    'MasseHoaraireHeb' => $rowData[15],
-                    'massHorRealiseeAnnuel' => $rowData[16],
-                    'Filiere' => $rowData[17],
-                    'Categorie' => $rowData[18],
-                    'idEtablissement' => $etablissement->id, // Supposant que la 20ème colonne contient l'id de l'établissement
+                // Créer une nouvelle instance de Complexe et la sauvegarder dans la base de données
+                Salle::create([
+                    'codeSalle' => $rowData[0], // Supposant que la première colonne contient le codeSalle
+                    'nomSalle' => $rowData[1], // Supposant que la deuxième colonne contient le nomSalle
                 ]);
             }
 

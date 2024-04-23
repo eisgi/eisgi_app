@@ -14,11 +14,11 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::post('/login',[AuthController::class,'login'])->name('auth.login');
+Route::post('/authlogin',[AuthController::class,'login'])->name('auth.login');
 Route::view('/admin','admin.home')->name('homeAdmin');
 Route::view('/formateur','formateur.home')->name('homeFormateur');
 Route::view('/stagaire','stagaire.home')->name('homeStagaire');
-Route::delete('logout',[AuthController::class,'logout'])->name('auth.logout');
+Route::delete('authlogout',[AuthController::class,'logout'])->name('auth.logout');
 Route::get('/semaines', [AnneeFormationController::class, 'index']);
     Route::post('/semaines', [AnneeFormationController::class, 'generer'])->name('genererSemaines');
 Route::get('/dashboard', function () {
@@ -59,3 +59,4 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+require __DIR__.'/auth.php';

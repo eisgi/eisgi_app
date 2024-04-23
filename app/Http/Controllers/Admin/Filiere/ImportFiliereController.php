@@ -53,7 +53,7 @@ class ImportFiliereController extends Controller
                 for ($col = 'A'; $col <= $highestColumn; $col++) {
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
-
+                
                 // Create a new Filiere instance and save it to the database
                 Filiere::create([
                     'codeFiliere' => $rowData[0], // Assuming the first column contains codeFiliere

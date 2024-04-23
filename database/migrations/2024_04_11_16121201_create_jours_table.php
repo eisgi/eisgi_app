@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('jours', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_feriee');
-            $table->foreignId('idSemestre')->constrained('semestres')->onDelete('cascade');
+            $table->string('libelle');
+            $table->boolean('is_feriee')->default(false);
+            $table->foreignId('id_Semaine')->constrained('semaines')->onDelete('cascade');
         });
     }
 

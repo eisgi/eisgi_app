@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Formateur;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Formateur;
+use App\Models\Etablissement;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Carbon\Carbon;
 
@@ -55,6 +56,10 @@ class FormateurImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
+                //jib lclé 3ad inseriha
+
+                $etablissement=Etablissement::where('NomEtablissement',$rowData[19])->first();
+
                 // Convertir les dates en utilisant strtotime
                 $rowData[8] = date('Y-m-d', strtotime($rowData[8]));
                 $rowData[9] = date('Y-m-d', strtotime($rowData[9]));
@@ -81,7 +86,7 @@ class FormateurImportController extends Controller
                     'massHorRealiseeAnnuel' => $rowData[16],
                     'Filiere' => $rowData[17],
                     'Categorie' => $rowData[18],
-                    'idEtablissement' => $rowData[19], // Supposant que la 20ème colonne contient l'id de l'établissement
+                    'idEtablissement' => $etablissement->id, // Supposant que la 20ème colonne contient l'id de l'établissement
                 ]);
             }
 

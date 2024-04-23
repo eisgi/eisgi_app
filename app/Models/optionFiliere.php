@@ -18,10 +18,14 @@ class OptionFiliere extends Model
         'codeFiliere',
     ];
     public $timestamps = false;
-
-    // Define the relationship with the Filieres model
+    /**
+     * Get the user that owns the optionFiliere
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function filiere()
     {
         return $this->belongsTo(Filiere::class, 'codeFiliere', 'codeFiliere');
     }
+
 }

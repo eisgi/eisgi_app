@@ -15,6 +15,9 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+Route::get('/timetable', function () {
+    return view('TimeTable.timeTable');
+})->name('emploi');
 Route::post('/authlogin',[AuthController::class,'login'])->name('auth.login');
 Route::view('/admin','admin.home')->name('homeAdmin');
 Route::view('/formateur','formateur.home')->name('homeFormateur');

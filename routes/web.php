@@ -40,7 +40,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/formimport', [ImportFiliereController::class, 'showForm'])->name('importfiliereform');
         Route::post('/import', [ImportFiliereController::class, 'import'])->name('importfiliereaction');
     });
-    Route::get('/timetable/group/{Id}', [Timetable::class,'index'])->name('emploi');
 
     Route::prefix('optionfiliere')->group(function () {
         Route::get('/formimport', [OptionFiliereImportController::class, 'showForm'])->name('importoptionfiliereform');
@@ -66,6 +65,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/formimport', [SalleImportController::class, 'showForm'])->name('importsalleform');
         Route::post('/import', [SalleImportController::class, 'import'])->name('importsalleaction');
     });
+    
+    // l'emploi du temps
+    Route::get('/timetable/group/{Id}', [Timetable::class,'group'])->name('emploi.group');
+    Route::get('/timetable/teacher/{Id}', [Timetable::class,'teacher'])->name('emploi.teacher');
+    Route::get('/timetable/global', [Timetable::class,'global'])->name('emploi.global');
+
 });
 
 require __DIR__.'/auth.php';

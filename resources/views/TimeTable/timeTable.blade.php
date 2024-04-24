@@ -2,43 +2,20 @@
 <html lang="fr" class="no-js">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('style/emploi/css/reset.css') }}"> <!-- Réinitialisation CSS -->
-    <link rel="stylesheet" href="{{ asset('style/emploi/css/style.css') }}"> <!-- Style des ressources -->
+    @php
+        // we need to ensure that the variable passed to the component is not null
+        $group = isset($schedule['Group']) ? $schedule['Group'] : null;
+    @endphp
 
-    <title>Modèle d'emploi du temps</title>
+    @include('components.timeTableHeader', ['gr' => $group])
 </head>
 
 <body>
     <div class="cd-schedule loading">
-        <h1>{{$schedule['Group']}}</h1>
+      
         <div class="timeline">
-            <ul>
-                <li><span>8:30</span></li>
-                <li><span>9:00</span></li>
-                <li><span>9:30</span></li>
-                <li><span>10:00</span></li>
-                <li><span>10:30</span></li>
-                <li><span>11:00</span></li>
-                <li><span>11:30</span></li>
-                <li><span>12:00</span></li>
-                <li><span>12:30</span></li>
-                <li><span>13:00</span></li>
-                <li><span>13:30</span></li>
-                <li><span>14:00</span></li>
-                <li><span>14:30</span></li>
-                <li><span>15:00</span></li>
-                <li><span>15:30</span></li>
-                <li><span>16:00</span></li>
-                <li><span>16:30</span></li>
-                <li><span>17:00</span></li>
-                <li><span>17:30</span></li>
-                <li><span>18:00</span></li>
-                <li><span>18:30</span></li>
-            </ul>
+             @include('components.timeline')
         </div> <!-- .timeline -->
 
         <div class="events">
@@ -80,14 +57,7 @@
 
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
-    <script src="{{ asset('style/emploi/js/modernizr.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script>
-        var jqueryUrl = "{{ asset('style/emploi/js/main.js') }}";
-        if (!window.jQuery) document.write('<script src="' + jqueryUrl + '"><\/script>');
-    </script>
-
-    <script src="{{ asset('style/emploi/js/main.js') }}"></script>
+   @include('components.timeTableScript')
 </body>
 
 </html>

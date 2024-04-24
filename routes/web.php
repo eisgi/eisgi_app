@@ -11,13 +11,12 @@ use App\Http\Controllers\Admin\Module\ModuleImportController;
 use App\Http\Controllers\Admin\Salle\SalleImportController;
 use App\Http\Controllers\AnneeFormationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Timetable;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/timetable', function () {
-    return view('TimeTable.timeTable');
-})->name('emploi');
+
 Route::post('/authlogin',[AuthController::class,'login'])->name('auth.login');
 Route::view('/admin','admin.home')->name('homeAdmin');
 Route::view('/formateur','formateur.home')->name('homeFormateur');
@@ -41,6 +40,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/formimport', [ImportFiliereController::class, 'showForm'])->name('importfiliereform');
         Route::post('/import', [ImportFiliereController::class, 'import'])->name('importfiliereaction');
     });
+    Route::get('/timetable/group/{Id}', [Timetable::class,'index'])->name('emploi');
+
     Route::prefix('optionfiliere')->group(function () {
         Route::get('/formimport', [OptionFiliereImportController::class, 'showForm'])->name('importoptionfiliereform');
         Route::post('/import', [OptionFiliereImportController::class, 'import'])->name('importoptionfiliereaction');

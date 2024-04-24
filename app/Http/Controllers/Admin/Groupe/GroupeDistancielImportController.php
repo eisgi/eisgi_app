@@ -58,7 +58,7 @@ class GroupeDistancielImportController extends Controller
                 // Vérifier si la valeur de codeGroupeDS est vide
                 if (!empty($rowData[0])) {
                     // Recherche de l'option filière en fonction du libellé et de l'année
-                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[4])
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[5])
                                                     ->where('annee', $rowData[3])
                                                     ->first();
 
@@ -71,6 +71,7 @@ class GroupeDistancielImportController extends Controller
                         'libelleGroupeDS' => $rowData[1],
                         'nombreGroupeContenus' => $rowData[2],
                         'annee' => $rowData[3],
+                        'typegroupe'=> $rowData[4],
                         'option_filieres_id' => $optionFiliereId,
                     ]);
                 }

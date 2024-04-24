@@ -58,7 +58,7 @@ class GroupePresentielImportController extends Controller
                 // Vérifier si la valeur de codeGroupePR est vide
                 if (!empty($rowData[0])) {
                     // Recherche de l'option filière en fonction du libellé et de l'année
-                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[3])
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[4])
                                                     ->where('annee', $rowData[2])
                                                     ->first();
 
@@ -70,6 +70,7 @@ class GroupePresentielImportController extends Controller
                         'codeGroupePR' => $rowData[0],
                         'libelleGroupePR' => $rowData[1],
                         'annee' => $rowData[2],
+                        'typegroupe'=> $rowData[3],
                         'option_filieres_id' => $optionFiliereId,
                     ]);
                 }

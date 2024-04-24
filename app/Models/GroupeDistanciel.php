@@ -20,6 +20,7 @@ class GroupeDistanciel extends Model
         'libelleGroupeDS',
         'nombreGroupeContenus',
         'annee',
+        'typegroupe',
         'option_filieres_id',
     ];
 

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->string('codeGroupePR')->primary();
             $table->string('libelleGroupePR')->nullable();
             $table->UnsignedInteger('annee')->nullable();
+            $table->string('typegroupe',1)->nullable();
             $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
+
         });
     }
 

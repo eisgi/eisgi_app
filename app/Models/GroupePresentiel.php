@@ -19,6 +19,7 @@ class GroupePresentiel extends Model
         'codeGroupePR',
         'libelleGroupePR',
         'annee',
+        'typegroupe',
         'option_filieres_id',
     ];
 

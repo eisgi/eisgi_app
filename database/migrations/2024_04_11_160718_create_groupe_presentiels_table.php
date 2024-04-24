@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('groupe_presentiels', function (Blueprint $table) {
             $table->string('codeGroupePR')->primary();
-            $table->string('libelleGroupePR');
-            $table->string('groupeCodeOptionFiliere');
-            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade');
+            $table->string('libelleGroupePR')->nullable();
+            $table->UnsignedInteger('annee')->nullable();
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
         });
     }
 

@@ -15,32 +15,41 @@ class JourSeeder extends Seeder
     {
         $datas=[
             [
-                "libelle"=>"vacance 1",
-                "is_feriee"=>1,
+                "libelle"=>"Jour 1",
+                "is_feriee"=>0,
                 "id_Semaine"=>1
             ],
             [
-                "libelle"=>"Ce jour n'est pas un jour férié",
+                "libelle"=>"Jour 2",
                 "is_feriee"=>0,
-                "id_Semaine"=>2
+                "id_Semaine"=>1
             ],
             [
-                "libelle"=>"Ce jour n'est pas un jour férié",
+                "libelle"=>"Jour 3",
                 "is_feriee"=>0,
-                "id_Semaine"=>2
+                "id_Semaine"=>1
             ],
             [
-                "libelle"=>"Ce jour n'est pas un jour férié",
+                "libelle"=>"Jour 4",
                 "is_feriee"=>0,
-                "id_Semaine"=>2
+                "id_Semaine"=>1
             ],
-            
+
             [
-                "libelle"=>"vacance 2",
-                "is_feriee"=>1,
-                "id_Semaine"=>3
+                "libelle"=>"Jour 5",
+                "is_feriee"=>0,
+                "id_Semaine"=>1
             ],
-            
+            [
+                "libelle"=>"Jour 6",
+                "is_feriee"=>0,
+                "id_Semaine"=>1
+            ],
+            [
+                "libelle"=>"Jour 7",
+                "is_feriee"=>0,
+                "id_Semaine"=>1
+            ]
         ];
         foreach($datas as $data){
             Jour::create($data);

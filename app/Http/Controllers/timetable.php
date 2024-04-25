@@ -11,23 +11,29 @@ class Timetable extends Controller
         return view('TimeTable.timeTable', ['id' => 154]);
     }
     
-   public function group(string $groupId)
-    {
-        // Get the path to the JSON file
-        $filePath = storage_path('app/json/schedule.json');
+////////////////////////// 
 
-        // Read the JSON data from the file
-        $jsonData = file_get_contents($filePath);
-
-        // Decode the JSON data to an associative array
-        $schedule = json_decode($jsonData, true);
-
-        // Pass the schedule data to the view
-        return view('TimeTable.timeTable', ['schedule' => $schedule]);
-    }
      public function global()
     {
         return view('TimeTable.timeTable');
     }
+////////////////////////// 
+ public function group(string $groupId)
+{
+    
+    $filePath = storage_path('app/json/schedule.json');
+    $jsonData = file_get_contents($filePath);
+    $schedule = json_decode($jsonData, true);
+    $filteredSchedule = [];
+    foreach ($schedule as $group) {
+        if ($group['Group'] === $groupId) {
+            $filteredSchedule = $group;
+            break; 
+        }
+    }
+
+    return view('TimeTable.timeTable', ['schedule' => $filteredSchedule]);
+}
+
     
 }

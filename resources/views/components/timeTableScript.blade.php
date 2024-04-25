@@ -3,6 +3,7 @@
     <script>
         var jqueryUrl = "{{ asset('style/emploi/js/main.js') }}";
         if (!window.jQuery) document.write('<script src="' + jqueryUrl + '"><\/script>');
+        
     </script>
 
     <script src="{{ asset('style/emploi/js/main.js') }}"></script>

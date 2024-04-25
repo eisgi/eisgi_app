@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
+
 
 class Timetable extends Controller
 {
@@ -34,6 +36,16 @@ class Timetable extends Controller
 
     return view('TimeTable.timeTable', ['schedule' => $filteredSchedule]);
 }
+////////////////////////// 
+    public function exportToPdf(Request $request)
+    {
+        // Generate PDF content here (you can fetch data from the database, etc.)
+        $pdfContent = 'This is a sample PDF generated using Laravel and Dompdf.';
 
-    
+        // Generate PDF using Dompdf
+        $pdf = PDF::loadHTML($pdfContent);
+
+        // Download the PDF file with a custom name
+        return $pdf->download('time_table.pdf');
+    }
 }

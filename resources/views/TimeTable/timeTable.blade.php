@@ -9,31 +9,36 @@
     @endphp
 
     @include('components.timeTableHeader', ['gr' => $group])
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
 </head>
 
 <body>
+    <button onclick="downloadPDF()">Export as PDF</button>
+
     <div class="cd-schedule loading">
-      
+
         <div class="timeline">
-             @include('components.timeline')
+            @include('components.timeline')
         </div> <!-- .timeline -->
 
         <div class="events">
             <ul>
-                @foreach($schedule['days'] as $day)
-                <li class="events-group">
-                    <div class="top-info"><span>{{ $day['name'] }}</span></div>
+                @foreach ($schedule['days'] as $day)
+                    <li class="events-group">
+                        <div class="top-info"><span>{{ $day['name'] }}</span></div>
 
-                    <ul>
-                        @foreach($day['events'] as $event)
-                        <li class="single-event" data-start="{{ $event['start'] }}" data-end="{{ $event['end'] }}" data-content="{{ $event['content'] }}" data-event="{{ $event['eventId'] }}">
-                            <a href="#0">
-                                <em class="event-name">{{ $event['name'] }}</em>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </li>
+                        <ul>
+                            @foreach ($day['events'] as $event)
+                                <li class="single-event" data-start="{{ $event['start'] }}" data-end="{{ $event['end'] }}"
+                                    data-content="{{ $event['content'] }}" data-event="{{ $event['eventId'] }}">
+                                    <a href="#0">
+                                        <em class="event-name">{{ $event['name'] }}</em>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -57,7 +62,17 @@
 
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
-   @include('components.timeTableScript')
+    <script>
+        function downloadPDF() {
+            // Get the HTML content of the entire page
+            var htmlContent = document.documentElement.outerHTML;
+
+            // Convert HTML content to PDF
+            html2pdf().from(htmlContent).save('timetable.pdf');
+        }
+    </script>
+
+    @include('components.timeTableScript')
 </body>
 
 </html>

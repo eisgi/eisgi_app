@@ -70,7 +70,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/timetable/group/{Id}', [Timetable::class,'group'])->name('emploi.group');
     Route::get('/timetable/teacher/{Id}', [Timetable::class,'teacher'])->name('emploi.teacher');
     Route::get('/timetable/global', [Timetable::class,'global'])->name('emploi.global');
-    Route::post('/export', [Timetable::class, 'exportToPdf'])->name('export.pdf');
+    Route::post('/export-PDF', [Timetable::class, 'exportToPdf'])->name('export.pdf');
 
 });
 

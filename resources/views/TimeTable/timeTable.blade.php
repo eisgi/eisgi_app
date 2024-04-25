@@ -9,36 +9,31 @@
     @endphp
 
     @include('components.timeTableHeader', ['gr' => $group])
-    
 </head>
 
 <body>
-   <div>
-        <a href="{{ route('export.pdf') }}" class="btn btn-primary">Export Time Table</a>
-    </div>
     <div class="cd-schedule loading">
-
+      
         <div class="timeline">
-            @include('components.timeline')
+             @include('components.timeline')
         </div> <!-- .timeline -->
 
         <div class="events">
             <ul>
-                @foreach ($schedule['days'] as $day)
-                    <li class="events-group">
-                        <div class="top-info"><span>{{ $day['name'] }}</span></div>
+                @foreach($schedule['days'] as $day)
+                <li class="events-group">
+                    <div class="top-info"><span>{{ $day['name'] }}</span></div>
 
-                        <ul>
-                            @foreach ($day['events'] as $event)
-                                <li class="single-event" data-start="{{ $event['start'] }}" data-end="{{ $event['end'] }}"
-                                    data-content="{{ $event['content'] }}" data-event="{{ $event['eventId'] }}">
-                                    <a href="#0">
-                                        <em class="event-name">{{ $event['name'] }}</em>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
+                    <ul>
+                        @foreach($day['events'] as $event)
+                        <li class="single-event" data-start="{{ $event['start'] }}" data-end="{{ $event['end'] }}" data-content="{{ $event['content'] }}" data-event="{{ $event['eventId'] }}">
+                            <a href="#0">
+                                <em class="event-name">{{ $event['name'] }}</em>
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </li>
                 @endforeach
             </ul>
         </div>
@@ -61,22 +56,8 @@
         </div>
 
         <div class="cover-layer"></div>
-
-
     </div> <!-- .cd-schedule -->
-    <script>
-         function exportToPdf() {
-            // Create a new jsPDF instance
-            var doc = new jsPDF();
-
-            // Add content to the PDF
-            doc.text(20, 20, 'This is a sample PDF generated using jsPDF.');
-
-            // Save the PDF
-            doc.save('time_table.pdf');
-        }
-    </script>
-    @include('components.timeTableScript')
+   @include('components.timeTableScript')
 </body>
 
 </html>

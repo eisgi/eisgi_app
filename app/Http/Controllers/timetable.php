@@ -5,7 +5,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
 
-
 class Timetable extends Controller
 {
        public function teacher(string $id)
@@ -37,15 +36,15 @@ class Timetable extends Controller
     return view('TimeTable.timeTable', ['schedule' => $filteredSchedule]);
 }
 ////////////////////////// 
-    public function exportToPdf(Request $request)
+   public function exportToPdf(Request $request)
     {
-        // Generate PDF content here (you can fetch data from the database, etc.)
-        $pdfContent = 'This is a sample PDF generated using Laravel and Dompdf.';
+        // Retrieve the HTML content from the request
+        $htmlContent = $request->input('htmlContent');
 
-        // Generate PDF using Dompdf
-        $pdf = PDF::loadHTML($pdfContent);
+        // Generate PDF using Laravel Snappy
+        $pdf = PDF::loadHTML($htmlContent);
 
-        // Download the PDF file with a custom name
+        // Return the PDF for download
         return $pdf->download('time_table.pdf');
     }
 }

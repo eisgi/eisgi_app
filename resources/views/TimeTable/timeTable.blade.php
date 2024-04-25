@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <button onclick="downloadPDF()">Export as PDF</button>
+   <button onclick="downloadPDF()" class="cool-button">Télécharge l'emploi du temps.</button>
+
 
     <div class="cd-schedule loading">
 
@@ -66,9 +67,11 @@
         function downloadPDF() {
             // Get the HTML content of the entire page
             var htmlContent = document.documentElement.outerHTML;
+            // Concatenate the value of $group with the filename
+            var filename = 'Group ' + '{{ $group }}' + '.pdf';
 
-            // Convert HTML content to PDF
-            html2pdf().from(htmlContent).save('timetable.pdf');
+            // Convert HTML content to PDF and save with the dynamic filename
+            html2pdf().from(htmlContent).save(filename);
         }
     </script>
 

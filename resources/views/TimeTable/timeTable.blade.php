@@ -4,7 +4,6 @@
 <head>
 
     @php
-        // we need to ensure that the variable passed to the component is not null
         $group = isset($schedule['Group']) ? $schedule['Group'] : null;
     @endphp
 
@@ -65,36 +64,31 @@
     </div> <!-- .cd-schedule -->
         <script>
         function downloadPDF() {
-            // Get the HTML content of the entire page
             var htmlContent = document.documentElement.outerHTML;
-            // Concatenate the value of $group with the filename
             var filename = 'Group ' + '{{ $group }}' + '.pdf';
-
-            // Remove the event-modal and cover-layer sections from the HTML content
-            htmlContent = removeEventModal(htmlContent);
-
-            // Convert HTML content to PDF and save with the dynamic filename
+             htmlContent = removeUnwantedElements(htmlContent);
             html2pdf().from(htmlContent).save(filename);
         }
 
-        function removeEventModal(htmlContent) {
-            // Create a temporary element to manipulate the HTML content
+        function removeUnwantedElements(htmlContent) {
             var tempElement = document.createElement('div');
             tempElement.innerHTML = htmlContent;
 
-            // Find and remove the event-modal section
             var eventModal = tempElement.querySelector('.event-modal');
             if (eventModal) {
                 eventModal.parentNode.removeChild(eventModal);
             }
 
-            // Find and remove the cover-layer section
             var coverLayer = tempElement.querySelector('.cover-layer');
             if (coverLayer) {
                 coverLayer.parentNode.removeChild(coverLayer);
             }
 
-            // Return the updated HTML content
+            var coolButton = tempElement.querySelector('.cool-button');
+            if (coolButton) {
+                coolButton.parentNode.removeChild(coolButton);
+            }
+
             return tempElement.innerHTML;
         }
     </script>

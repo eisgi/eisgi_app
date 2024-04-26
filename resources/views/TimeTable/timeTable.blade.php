@@ -63,15 +63,39 @@
 
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
-    <script>
+        <script>
         function downloadPDF() {
             // Get the HTML content of the entire page
             var htmlContent = document.documentElement.outerHTML;
             // Concatenate the value of $group with the filename
             var filename = 'Group ' + '{{ $group }}' + '.pdf';
 
+            // Remove the event-modal and cover-layer sections from the HTML content
+            htmlContent = removeEventModal(htmlContent);
+
             // Convert HTML content to PDF and save with the dynamic filename
             html2pdf().from(htmlContent).save(filename);
+        }
+
+        function removeEventModal(htmlContent) {
+            // Create a temporary element to manipulate the HTML content
+            var tempElement = document.createElement('div');
+            tempElement.innerHTML = htmlContent;
+
+            // Find and remove the event-modal section
+            var eventModal = tempElement.querySelector('.event-modal');
+            if (eventModal) {
+                eventModal.parentNode.removeChild(eventModal);
+            }
+
+            // Find and remove the cover-layer section
+            var coverLayer = tempElement.querySelector('.cover-layer');
+            if (coverLayer) {
+                coverLayer.parentNode.removeChild(coverLayer);
+            }
+
+            // Return the updated HTML content
+            return tempElement.innerHTML;
         }
     </script>
 

@@ -333,7 +333,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-1"]:hover {
-  background: rgba(242, 108, 108, 0.979);
+  background: rgba(112, 242, 108, 0.979);
 }
 
 .cd-schedule .single-event[data-event="event-2"],
@@ -342,7 +342,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-2"]:hover {
-  background: rgba(242, 108, 108, 0.979);
+  background: rgba(85, 85, 85, 0.979);
 }
 
 .cd-schedule .single-event[data-event="event-3"],
@@ -351,7 +351,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-3"]:hover {
-  background: rgba(242, 108, 108, 0.979);
+  background: rgba(166, 108, 242, 0.979);
 }
 
 .cd-schedule .single-event[data-event="event-4"],
@@ -360,7 +360,7 @@ Main Components
 }
 
 .cd-schedule .single-event[data-event="event-4"]:hover {
-  background: rgba(242, 108, 108, 0.979);
+  background: rgba(108, 166, 242, 0.979);
 }
 
 .cd-schedule .event-modal {

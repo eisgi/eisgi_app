@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupe_presentiels', function (Blueprint $table) {
+          
             $table->string('codeGroupePR')->primary();
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
+            $table->foreignId('groupe_physique_id')->constrained('groupe_physique')->onDelete('cascade')->nullable();
             $table->string('libelleGroupePR')->nullable();
             $table->UnsignedInteger('annee')->nullable();
             $table->string('typegroupe',1)->nullable();
-            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
-
+            
         });
     }
 

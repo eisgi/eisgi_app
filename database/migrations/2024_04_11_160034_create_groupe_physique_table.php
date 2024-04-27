@@ -15,6 +15,8 @@ class CreateGroupePhysiqueTable extends Migration
             $table->id();
             $table->string('codeGroupePhysique')->unique();
             $table->string('libelleGroupe')->unique();
+            $table->string('codeGroupeDS');
+            $table->foreign('codeGroupDs')->references('codeGroupeDS')->on('groupe_distanciels')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

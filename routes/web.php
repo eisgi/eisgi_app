@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+//importation
 use App\Http\Controllers\Admin\Filiere\ImportFiliereController;
 use App\Http\Controllers\Admin\OptionFiliere\OptionFiliereImportController;
 use App\Http\Controllers\Admin\Complexe\ComplexeImportController;
@@ -11,8 +13,15 @@ use App\Http\Controllers\Admin\Module\ModuleImportController;
 use App\Http\Controllers\Admin\Salle\SalleImportController;
 use App\Http\Controllers\Admin\Groupe\GroupeDistancielImportController;
 use App\Http\Controllers\Admin\Groupe\GroupePresentielImportController;
+use App\Http\Controllers\Admin\GestionEmploi\GestionnaireEmploi;
+
 use App\Http\Controllers\AnneeFormationController;
 use App\Http\Controllers\AuthController;
+
+//gestionemploi
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -79,6 +88,11 @@ Route::prefix('admin')->group(function () {
             Route::post('/import', [GroupePresentielImportController::class, 'import'])->name('import.groupepresentiel.action');
         });
     });
-});
 
+    Route::prefix('gestionemploi')->group(function () {
+        Route::get('/', [GestionnaireEmploi::class, 'afficherGestionnaire'])->name('gestionemploi.index');
+        Route::post('/selection-annee', [GestionnaireEmploi::class, 'selectionAnnee'])->name('gestionemploi.selection_annee');
+        Route::post('/selection-semaine', [GestionnaireEmploi::class, 'selectionSemaine'])->name('gestionemploi.selection_semaine');
+    });
+});
 require __DIR__.'/auth.php';

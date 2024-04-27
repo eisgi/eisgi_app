@@ -31,6 +31,7 @@ return new class extends Migration
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
             $table->foreign('idSalle')->references('id')->on('salles');
             $table->foreign('idSemaine')->references('id')->on('semaines');
+            
         });
     }
 

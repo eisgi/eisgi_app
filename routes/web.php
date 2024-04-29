@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\Salle\SalleImportController;
 use App\Http\Controllers\Admin\Groupe\GroupeDistancielImportController;
 use App\Http\Controllers\Admin\Groupe\GroupePresentielImportController;
 use App\Http\Controllers\Admin\GestionEmploi\GestionnaireEmploi;
-
+use App\Http\Controllers\Admin\Groupe\GroupePhysiqueImportController;
 use App\Http\Controllers\AnneeFormationController;
 use App\Http\Controllers\AuthController;
 
@@ -87,6 +87,12 @@ Route::prefix('admin')->group(function () {
             Route::get('/formimport', [GroupePresentielImportController::class, 'showForm'])->name('import.groupepresentiel.form');
             Route::post('/import', [GroupePresentielImportController::class, 'import'])->name('import.groupepresentiel.action');
         });
+        Route::prefix('physique')->group(function () {
+            Route::get('/formimport', [GroupePhysiqueImportController::class, 'showForm'])->name('import.groupephysique.form');
+            Route::post('/import', [GroupePhysiqueImportController::class, 'import'])->name('import.groupephysique.action');
+        });
+    });
+        
     });
 
     Route::prefix('gestionemploi')->group(function () {
@@ -94,5 +100,4 @@ Route::prefix('admin')->group(function () {
         Route::post('/selection-annee', [GestionnaireEmploi::class, 'selectionAnnee'])->name('gestionemploi.selection_annee');
         Route::post('/selection-semaine', [GestionnaireEmploi::class, 'selectionSemaine'])->name('gestionemploi.selection_semaine');
     });
-});
 require __DIR__.'/auth.php';

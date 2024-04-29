@@ -21,6 +21,7 @@ class GroupePresentiel extends Model
         'annee',
         'typegroupe',
         'option_filieres_id',
+        'groupe_physique_id'
     ];
 
     public function optionFiliere()

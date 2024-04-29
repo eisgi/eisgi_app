@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Admin\Groupe;
 
 use App\Http\Controllers\Controller;
-use App\Models\GroupePhysique;
 use Illuminate\Http\Request;
+use App\Models\GroupePhysique;
 use App\Models\OptionFiliere;
-use App\Models\GroupePresentiel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class GroupePresentielImportController extends Controller
+class GroupePhysiqueImportController extends Controller
 {
     public function showForm()
     {
-        return view('admin.groupe.groupepresentielimportform');
+        return view('admin.groupe.groupephysiqueimportform');
     }
 
     public function import(Request $request)
@@ -56,36 +55,30 @@ class GroupePresentielImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
-                // Vérifier si la valeur de codeGroupePR est vide
+                // Vérifier si la valeur de `codeGroupePhysique` est vide
                 if (!empty($rowData[0])) {
-                    // Recherche de l'option filière en fonction du libellé et de l'année
-                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[4])
-                                                    ->where('annee', $rowData[2])
-                                                    ->first();
+                    // Recherche de l'option filière en fonction de `optionFiliere`
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[3])->first();
 
                     // Si l'option filière n'existe pas, insérer NULL
                     $optionFiliereId = $optionFiliere ? $optionFiliere->id : null;
-                    $groupePhysique=GroupePhysique::where('codeGroupePhysique',$rowData[5])
-                                                    ->where('annee',$rowData[2])
-                                                    ->first();
-                    $groupePhysiqueId=$groupePhysique?$groupePhysique->id:null;
-                    // Créer une nouvelle instance de GroupePresentiel et la sauvegarder dans la base de données
-                    GroupePresentiel::create([
-                        'codeGroupePR' => $rowData[0],
+
+                    // Créer une nouvelle instance de GroupePhysique et la sauvegarder dans la base de données
+                    GroupePhysique::create([
+                        'codeGroupePhysique' => $rowData[0],
+                        'libelleGroupe' => $rowData[1],
+                        'annee' => $rowData[4],
+                        'codeGroupeDS' => $rowData[2],
                         'option_filieres_id' => $optionFiliereId,
-                        'groupe_physique_id'=>$groupePhysiqueId,
-                        'libelleGroupePR' => $rowData[1],
-                        'annee' => $rowData[2],
-                        'typegroupe'=> $rowData[3],
                     ]);
                 }
             }
 
             // Rediriger avec un message de succès
-            return redirect()->back()->with('success', 'Importation des groupes présentiels terminée avec succès !');
+            return redirect()->back()->with('success', 'Importation des groupes physiques terminée avec succès !');
         } catch (\Exception $e) {
             // Rediriger avec un message d'erreur si l'importation échoue
-            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes présentiels : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes physiques : ' . $e->getMessage());
         }
     }
 }

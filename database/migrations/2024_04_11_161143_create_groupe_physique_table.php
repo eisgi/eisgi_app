@@ -14,9 +14,11 @@ class CreateGroupePhysiqueTable extends Migration
         Schema::create('groupe_physique', function (Blueprint $table) {
             $table->id();
             $table->string('codeGroupePhysique')->unique();
-            $table->string('libelleGroupe')->unique();
+            $table->string('libelleGroupe')->nullable();
+            $table->UnsignedInteger('annee')->nullable();
             $table->string('codeGroupeDS');
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
         });
     }
 

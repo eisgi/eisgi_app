@@ -9,11 +9,13 @@ use App\Models\AnneeFormation;
 use App\Models\Semaine;
 use App\Models\Formateur;
 use App\Models\Module;
+use App\Models\GroupePhysique;
 use App\Models\GroupeDistanciel;
 use App\Models\GroupePresentiel;
 use App\Models\Jour;
 use App\Models\Seance;
 use App\Models\Salle;
+use App\Models\AffectationFormodgr;
 
 class GestionnaireEmploi extends Controller
 {
@@ -35,15 +37,23 @@ class GestionnaireEmploi extends Controller
         $semaineId = $request->input('semaine_id');
         $semaine = Semaine::findOrFail($semaineId);
         $jours = Jour::where('id_Semaine', $semaineId)->get();
-        // dd($jours);
-        $formateurs = Formateur::all();
-        $modules = Module::all();
         $salles = Salle::all();
         $seances = Seance::all();
+        $groupesPhysiques=GroupePhysique::all();
         $groupesDistanciels = GroupeDistanciel::all();
         $groupesPresentiels = GroupePresentiel::all();
 
-        return view('admin.GestionEmploi.gestionnaireEmploi', compact('semaine', 'jours', 'formateurs', 'modules', 'salles', 'seances', 'groupesDistanciels', 'groupesPresentiels'));
+        return view('admin.GestionEmploi.gestionnaireEmploi', compact('semaine', 'jours', 'groupesPhysiques', 'salles', 'seances', 'groupesDistanciels', 'groupesPresentiels'));
+    }
+    public function remplirSelect(Request $request){
+        dd($request->all());
+        $codeGroupeRecherche=$request->groupereherche;
+        $affectationsGroupeRecherche=AffectationFormodgr::with('formateurs')->where('idGroupePhysique',$codeGroupeRecherche)->get();
+        dd($affectationsGroupeRecherche);
+        // $id_formateursGroupeRecherche=$affectationsGroupeRecherche->pluck('matricule')->toArray();
+
+
+
     }
 
 }

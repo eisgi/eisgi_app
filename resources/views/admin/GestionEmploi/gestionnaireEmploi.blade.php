@@ -78,20 +78,32 @@
     </tr>
     {{-- 3ndi 25 col --}}
 
-    @if(isset($groupesDistanciels) && isset($groupesPresentiels) && isset($formateurs) && isset($salles) && isset($modules) && isset($seances)
+    @if(isset($groupesDistanciels) && isset($groupesPresentiels)  && isset($salles) && isset($groupesPhysiques) && isset($seances)
         && isset($jours)
     )
     {{-- partie dist --}}
 <tr>
      <td>
-        <select>
-            @foreach ( $groupesDistanciels as $grDst )
+        <form action={{route("gestionemploi.remplir_select")}} method="POST">
+            @csrf
 
-                <option value="{{$grDst->codeGroupeDS}}">{{$grDst->codeGroupeDS}}</option>
-             @endforeach
+                <select name="grouperecherche">
+                    <optgroup label="Groupes Distanciels">
+                        @foreach ( $groupesDistanciels as $grDst )
 
-        </select>
+                            <option value="{{$grDst->codeGroupeDS}}">{{$grDst->codeGroupeDS}}</option>
+                        @endforeach
+                    </optgroup>
+                    <optgroup label="Groupes Presentiels">
+                        @foreach ( $groupesPresentiels as $grPrt )
 
+                            <option value="{{$grPrt->codeGroupeDS}}">{{$grPrt->codeGroupePR}}</option>
+                        @endforeach
+                    </optgroup>
+
+                </select>
+                <button type="submit">Choisir</button>
+        </form>
     </td>
     <td>Salle</td>
     <td>
@@ -103,39 +115,6 @@
 
     </td>
 
-</tr>
-<tr>
-    <td></td>
-    <td>Formateur</td>
-    <td>
-        <select>
-            @foreach ( $formateurs as $formateur )
-                    <option value="{{$formateur->matricule}}">{{$formateur->nom}}</option>
-            @endforeach
-        </select>
-    </td>
-</tr>
-<tr>
-    <td></td>
-    <td>Module</td>
-    <td>
-        <select>
-            @foreach ( $modules as $module )
-                    <option value="{{$module->id}}">{{$module->codeModule}}</option>
-            @endforeach
-        </select>
-    </td>
-</tr>
-<tr>
-        <td>
-            <select >
-                @foreach ($groupesPresentiels as $grPst )
-
-                <option  id="grp" value="{{$grPst->codeGroupePR}}">{{$grPst->codeGroupePR}}</option>
-                @endforeach
-            </select>
-
-        </td>
 </tr>
     @endif
 

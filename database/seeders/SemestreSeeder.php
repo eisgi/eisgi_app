@@ -18,19 +18,19 @@ class SemestreSeeder extends Seeder
                 "codeSemestre"=>"S1",
                 "dateDebutSemestre"=>'2024-09-05',
                 "dateFinSemestre"=>'2025-01-19',
-                "anneeFormation"=>'2024-2025'
+                "anneeFormation"=>'2024/2025'
             ],
             [
                 "codeSemestre"=>"S2",
                 "dateDebutSemestre"=>'2025-01-29',
                 "dateFinSemestre"=>'2025-07-05',
-                "anneeFormation"=>'2024-2025'
+                "anneeFormation"=>'2024/2025'
             ],
             [
                 "codeSemestre"=>"S3",
                 "dateDebutSemestre"=>'2025-09-05',
                 "dateFinSemestre"=>'2026-01-18',
-                "anneeFormation"=>'2025-2026'
+                "anneeFormation"=>'2025/2026'
             ],
         ];
         foreach($datas as $data){

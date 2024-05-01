@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Semaine;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class SemaineSeeder extends Seeder
 {
@@ -13,39 +13,35 @@ class SemaineSeeder extends Seeder
      */
     public function run(): void
     {
-        $datas = [
-            [
-                "codeSemaine" => "Sem1",
-                "dateDebutSemaine" => "2024-09-05",
-                "dateFinSemaine" => "2024-09-07",
-                "idSemestre" => 1,
-                "anneeFormation" => "2024-2025"
-            ],
-            [
-                "codeSemaine" => "Sem2",
-                "dateDebutSemaine" => "2024-09-09",
-                "dateFinSemaine" => "2024-09-14",
-                "idSemestre" => 1,
-                "anneeFormation" => "2024-2025"
-            ],
-            [
-                "codeSemaine" => "Sem34",
-                "dateDebutSemaine" => "2025-06-09",
-                "dateFinSemaine" => "2025-06-14",
-                "idSemestre" => 2,
-                "anneeFormation" => "2024-2025"
-            ],
-            [
-                "codeSemaine" => "Sem-S3-1",
-                "dateDebutSemaine" => "2025-09-05",
-                "dateFinSemaine" => "2025-09-07",
-                "idSemestre" => 1,
-                "anneeFormation" => "2025-2026"
-            ],
-
-        ];
-        foreach ($datas as $data) {
+        // Définissez la date de début pour la première semaine
+        $dateDebut = Carbon::parse('2024-09-05');
+        
+        // Définir l'identifiant du semestre et l'année de formation
+        $idSemestre = 1;
+        $anneeFormation = '2024/2025';
+        
+        // Générer 7 semaines
+        for ($i = 1; $i <= 7; $i++) {
+            // Calculer la date de fin de la semaine en ajoutant 6 jours à la date de début
+            $dateFin = $dateDebut->copy()->addDays(6);
+            
+            // Créer un code de semaine basé sur l'itération actuelle
+            $codeSemaine = "Sem" . $i;
+            
+            // Créer les données de la semaine
+            $data = [
+                "codeSemaine" => $codeSemaine,
+                "dateDebutSemaine" => $dateDebut->toDateString(),
+                "dateFinSemaine" => $dateFin->toDateString(),
+                "idSemestre" => $idSemestre,
+                "anneeFormation" => $anneeFormation,
+            ];
+            
+            // Créer la semaine dans la base de données
             Semaine::create($data);
+            
+            // Passer à la semaine suivante en ajoutant 7 jours à la date de début
+            $dateDebut->addDays(7);
         }
     }
 }

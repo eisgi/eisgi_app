@@ -46,9 +46,10 @@ class GestionnaireEmploi extends Controller
         return view('admin.GestionEmploi.gestionnaireEmploi', compact('semaine', 'jours', 'groupesPhysiques', 'salles', 'seances', 'groupesDistanciels', 'groupesPresentiels'));
     }
     public function remplirSelect(Request $request){
-        dd($request->all());
-        $codeGroupeRecherche=$request->groupereherche;
-        $affectationsGroupeRecherche=AffectationFormodgr::with('formateurs')->where('idGroupePhysique',$codeGroupeRecherche)->get();
+        $codeGroupeRecherche = $request->input('grouperecherche');
+        
+        $affectationsGroupeRecherche = AffectationFormodgr::with('formateurs', 'modules')->where('idGroupePhysique', $codeGroupeRecherche)->get();
+
         dd($affectationsGroupeRecherche);
         // $id_formateursGroupeRecherche=$affectationsGroupeRecherche->pluck('matricule')->toArray();
 

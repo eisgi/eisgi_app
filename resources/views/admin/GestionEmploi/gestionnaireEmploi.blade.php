@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-<form>
+
     <table>
         <h1>{{$semaine}}</h1>
     <tr>
@@ -88,16 +88,16 @@
             @csrf
 
                 <select name="grouperecherche">
-                    <optgroup label="Groupes Distanciels">
+                    <optgroup label="Groupes Distanciels" name="grouperecherche">
                         @foreach ( $groupesDistanciels as $grDst )
 
                             <option value="{{$grDst->codeGroupeDS}}">{{$grDst->codeGroupeDS}}</option>
                         @endforeach
                     </optgroup>
-                    <optgroup label="Groupes Presentiels">
+                    <optgroup label="Groupes Presentiels" name="grouperecherche">
                         @foreach ( $groupesPresentiels as $grPrt )
 
-                            <option value="{{$grPrt->codeGroupeDS}}">{{$grPrt->codeGroupePR}}</option>
+                            <option value="{{$grPrt->codeGroupePR}}">{{$grPrt->codeGroupePR}}</option>
                         @endforeach
                     </optgroup>
 
@@ -121,7 +121,7 @@
 
 
     </table>
-</form>
+
 
 
 </body>

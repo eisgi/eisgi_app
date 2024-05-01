@@ -15,7 +15,7 @@ class CreateGroupePhysiqueTable extends Migration
             $table->id();
             $table->string('codeGroupePhysique')->unique();
             $table->string('libelleGroupe')->nullable();
-            $table->UnsignedInteger('annee')->nullable();
+            $table->enum('annee',['1A','2A','3A'])->nullable();
             $table->string('codeGroupeDS');
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();

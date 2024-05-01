@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Groupe\GroupeDistancielImportController;
 use App\Http\Controllers\Admin\Groupe\GroupePresentielImportController;
 use App\Http\Controllers\Admin\GestionEmploi\GestionnaireEmploi;
 use App\Http\Controllers\Admin\Groupe\GroupePhysiqueImportController;
+use App\Http\Controllers\Admin\GestionAffectation\AffectationFormodgrImportController;
 use App\Http\Controllers\AnneeFormationController;
 use App\Http\Controllers\AuthController;
 
@@ -91,8 +92,12 @@ Route::prefix('admin')->group(function () {
             Route::get('/formimport', [GroupePhysiqueImportController::class, 'showForm'])->name('import.groupephysique.form');
             Route::post('/import', [GroupePhysiqueImportController::class, 'import'])->name('import.groupephysique.action');
         });
+
     });
-        
+    Route::prefix('affectation')->group(function () {
+        Route::get('/formimport', [AffectationFormodgrImportController::class, 'showForm'])->name('import.affectation.form');
+        Route::post('/import', [AffectationFormodgrImportController::class, 'import'])->name('import.affectation.action');
+    });
     });
 
     Route::prefix('gestionemploi')->group(function () {

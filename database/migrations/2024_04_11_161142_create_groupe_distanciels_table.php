@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('codeGroupeDS')->primary();
             $table->string('libelleGroupeDS')->nullable();
             $table->UnsignedInteger('nombreGroupeContenus')->nullable();
-            $table->UnsignedInteger('annee')->nullable();
+            $table->enum('annee',['1A','2A','3A'])->nullable();
             $table->string('typegroupe',1)->nullable();
             $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
 

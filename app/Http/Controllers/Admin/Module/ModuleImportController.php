@@ -56,7 +56,9 @@ class ModuleImportController extends Controller
                 }
 
                 // Recherche de l'option filière basée sur le codeOptionFiliere
-                $optionFiliere = OptionFiliere::where('codeOptionFiliere', $rowData[6])->first();
+                $optionFiliere = OptionFiliere::where('codeOptionFiliere', $rowData[6])
+                                            ->where('annee', $rowData[7])
+                                            ->first();
 
                 // Vérifier si l'option filière existe
                 if ($optionFiliere) {
@@ -69,7 +71,7 @@ class ModuleImportController extends Controller
                         'Coef' => $rowData[4],
                         'EFM_Regional' => $rowData[5],
                         'option_filieres_id' => $optionFiliere->id, // Utiliser l'ID de l'option filière
-                        'semestreModule' => $rowData[7],
+                        'semestreModule' => $rowData[8],
                     ]);
                 } else {
                     // Si l'option filière n'existe pas, vous pouvez gérer cette situation en conséquence

@@ -98,11 +98,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/formimport', [AffectationFormodgrImportController::class, 'showForm'])->name('import.affectation.form');
         Route::post('/import', [AffectationFormodgrImportController::class, 'import'])->name('import.affectation.action');
     });
-    });
-
     Route::prefix('gestionemploi')->group(function () {
         Route::get('/', [GestionnaireEmploi::class, 'afficherGestionnaire'])->name('gestionemploi.index');
         Route::post('/selection-annee', [GestionnaireEmploi::class, 'selectionAnnee'])->name('gestionemploi.selection_annee');
         Route::post('/selection-semaine', [GestionnaireEmploi::class, 'selectionSemaine'])->name('gestionemploi.selection_semaine');
     });
+    });
+
+
 require __DIR__.'/auth.php';

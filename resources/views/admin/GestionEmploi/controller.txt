@@ -1,8 +1,10 @@
-public function remplirSelect(Request $request){
-        $codeGroupeRecherche = $request->input('grouperecherche_selectionne_cle');
+    public function remplirSelect(Request $request){
+        $codeGroupeRecherche = $request->input('grouperecherche');
+
         $affectationsGroupeRecherche = AffectationFormodgr::with('formateurs', 'modules')->where('idGroupePhysique', $codeGroupeRecherche)->get();
 
-        return response()->json(compact('affectationsGroupeRecherche'));
+        dd($affectationsGroupeRecherche);
+        // $id_formateursGroupeRecherche=$affectationsGroupeRecherche->pluck('matricule')->toArray();
 
 
 

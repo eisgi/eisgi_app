@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('jours', function (Blueprint $table) {
             $table->id();
+            $table->date('date_jours');
             $table->string('libelle');
             $table->boolean('is_feriee')->default(false);
             $table->foreignId('id_Semaine')->constrained('semaines')->onDelete('cascade');

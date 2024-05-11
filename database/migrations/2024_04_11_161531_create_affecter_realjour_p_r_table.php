@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('affecter_realjour_p_r', function (Blueprint $table) {
+          
+
             $table->id();
             $table->UnsignedBigInteger('idSemaine');
             $table->UnsignedBigInteger('idJour');

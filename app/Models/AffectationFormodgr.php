@@ -23,7 +23,7 @@ class AffectationFormodgr extends Model
 
     public function formateurs()
     {
-        return $this->belongsTo(Formateur::class, 'matricule', 'matricule');
+        return $this->belongsTo(Formateur::class , 'matricule', 'matricule');
     }
 
     public function modules()

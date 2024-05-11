@@ -21,7 +21,6 @@ return new class extends Migration
             $table->UnsignedBigInteger('idModule');
             $table->string('codeGroupeDS');
             $table->decimal('MHRD', 2, 2);
-
             $table->unique(['idSemaine', 'idJour', 'idSalle', 'idSeance', 'matricule', 'idModule', 'codeGroupeDS'], 'unique_affecter_realjour_d_s');
 
             $table->foreign('idJour')->references('id')->on('jours');
@@ -31,7 +30,7 @@ return new class extends Migration
             $table->foreign('codeGroupeDS')->references('codeGroupeDS')->on('groupe_distanciels');
             $table->foreign('idSalle')->references('id')->on('salles');
             $table->foreign('idSemaine')->references('id')->on('semaines');
-            
+
         });
     }
 

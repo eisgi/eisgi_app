@@ -2,6 +2,8 @@
 
 
 namespace App\Http\Controllers\Admin\GestionEmploi;
+use Illuminate\Support\Facades\Log;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,15 +48,11 @@ class GestionnaireEmploi extends Controller
         return view('admin.GestionEmploi.gestionnaireEmploi', compact('semaine', 'jours', 'groupesPhysiques', 'salles', 'seances', 'groupesDistanciels', 'groupesPresentiels'));
     }
     public function remplirSelect(Request $request){
-        $codeGroupeRecherche = $request->input('grouperecherche');
-        
-        $affectationsGroupeRecherche = AffectationFormodgr::with('formateurs', 'modules')->where('idGroupePhysique', $codeGroupeRecherche)->get();
-
-        dd($affectationsGroupeRecherche);
-        // $id_formateursGroupeRecherche=$affectationsGroupeRecherche->pluck('matricule')->toArray();
-
-
-
+        $codeGroupeRecherche = $request->input('grouperecherche_selectionne_cle');
+        $idGroupeRecherche=GroupePhysique::where('codeGroupePhysique',$codeGroupeRecherche)->pluck('id')->first();
+        $affectationsGroupeRecherche = AffectationFormodgr::with('formateurs', 'modules')->where('idGroupePhysique', $idGroupeRecherche)->get();
+        return response()->json(compact('affectationsGroupeRecherche'));
     }
+
 
 }

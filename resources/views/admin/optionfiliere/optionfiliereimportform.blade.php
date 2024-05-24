@@ -13,7 +13,7 @@
     @if(session('error'))
         <div style="color: red;">{{ session('error') }}</div>
     @endif
-    <form action="{{ route('importoptionfiliereaction') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('import.optionfiliere.action') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="file">Sélectionnez un fichier Excel à importer :</label>
         <input type="file" name="file" id="file">

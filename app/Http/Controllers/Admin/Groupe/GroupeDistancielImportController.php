@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Module;
+namespace App\Http\Controllers\Admin\Groupe;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Module;
-use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\OptionFiliere;
+use App\Models\GroupeDistanciel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class ModuleImportController extends Controller
+class GroupeDistancielImportController extends Controller
 {
     public function showForm()
     {
-        return view('admin.module.moduleimportform');
+        return view('admin.groupe.groupedistancielimportform');
     }
 
     public function import(Request $request)
@@ -55,34 +55,34 @@ class ModuleImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
-                // Recherche de l'option filière basée sur le codeOptionFiliere
-                $optionFiliere = OptionFiliere::where('codeOptionFiliere', $rowData[6])
-                                            ->where('annee', $rowData[7])
-                                            ->first();
+                // Vérifier si la valeur de codeGroupeDS est vide
+                if (!empty($rowData[0])) {
+                    // Recherche de l'option filière en fonction du libellé et de l'année
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[5])
+                                                    ->where('annee', $rowData[3])
+                                                    ->first();
 
-                // Vérifier si l'option filière existe
-                if ($optionFiliere) {
-                    // Créer une nouvelle instance de Module et la sauvegarder dans la base de données
-                    Module::create([
-                        'codeModule' => $rowData[0],
-                        'libelleModule' => $rowData[1],
-                        'ordreModule' => $rowData[2],
-                        'MHT' => $rowData[3],
-                        'Coef' => $rowData[4],
-                        'EFM_Regional' => $rowData[5],
-                        'option_filieres_id' => $optionFiliere->id, // Utiliser l'ID de l'option filière
-                        'semestreModule' => $rowData[8],
+                    // Si l'option filière n'existe pas, insérer NULL
+                    $optionFiliereId = $optionFiliere ? $optionFiliere->id : null;
+
+                    // Créer une nouvelle instance de GroupeDistanciel et la sauvegarder dans la base de données
+                    GroupeDistanciel::create([
+                        'codeGroupeDS' => $rowData[0],
+                        'libelleGroupeDS' => $rowData[1],
+                        'nombreGroupeContenus' => $rowData[2],
+                        'annee' => $rowData[3],
+                        'typegroupe'=> $rowData[4],
+                        'option_filieres_id' => $optionFiliereId,
                     ]);
-                } else {
-                    // Si l'option filière n'existe pas, vous pouvez gérer cette situation en conséquence
                 }
             }
 
+
             // Rediriger avec un message de succès
-            return redirect()->back()->with('success', 'Importation terminée avec succès !');
+            return redirect()->back()->with('success', 'Importation des groupes distanciels terminée avec succès !');
         } catch (\Exception $e) {
             // Rediriger avec un message d'erreur si l'importation échoue
-            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation du fichier : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes distanciels : ' . $e->getMessage());
         }
     }
 }

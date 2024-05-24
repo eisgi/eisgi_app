@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Module;
+namespace App\Http\Controllers\Admin\Groupe;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Module;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+use App\Models\GroupePhysique;
 use App\Models\OptionFiliere;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class ModuleImportController extends Controller
+class GroupePhysiqueImportController extends Controller
 {
     public function showForm()
     {
-        return view('admin.module.moduleimportform');
+        return view('admin.groupe.groupephysiqueimportform');
     }
 
     public function import(Request $request)
@@ -55,34 +55,30 @@ class ModuleImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
-                // Recherche de l'option filière basée sur le codeOptionFiliere
-                $optionFiliere = OptionFiliere::where('codeOptionFiliere', $rowData[6])
-                                            ->where('annee', $rowData[7])
-                                            ->first();
+                // Vérifier si la valeur de `codeGroupePhysique` est vide
+                if (!empty($rowData[0])) {
+                    // Recherche de l'option filière en fonction de `optionFiliere`
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[3])->first();
 
-                // Vérifier si l'option filière existe
-                if ($optionFiliere) {
-                    // Créer une nouvelle instance de Module et la sauvegarder dans la base de données
-                    Module::create([
-                        'codeModule' => $rowData[0],
-                        'libelleModule' => $rowData[1],
-                        'ordreModule' => $rowData[2],
-                        'MHT' => $rowData[3],
-                        'Coef' => $rowData[4],
-                        'EFM_Regional' => $rowData[5],
-                        'option_filieres_id' => $optionFiliere->id, // Utiliser l'ID de l'option filière
-                        'semestreModule' => $rowData[8],
+                    // Si l'option filière n'existe pas, insérer NULL
+                    $optionFiliereId = $optionFiliere ? $optionFiliere->id : null;
+
+                    // Créer une nouvelle instance de GroupePhysique et la sauvegarder dans la base de données
+                    GroupePhysique::create([
+                        'codeGroupePhysique' => $rowData[0],
+                        'libelleGroupe' => $rowData[1],
+                        'annee' => $rowData[4],
+                        'codeGroupeDS' => $rowData[2],
+                        'option_filieres_id' => $optionFiliereId,
                     ]);
-                } else {
-                    // Si l'option filière n'existe pas, vous pouvez gérer cette situation en conséquence
                 }
             }
 
             // Rediriger avec un message de succès
-            return redirect()->back()->with('success', 'Importation terminée avec succès !');
+            return redirect()->back()->with('success', 'Importation des groupes physiques terminée avec succès !');
         } catch (\Exception $e) {
             // Rediriger avec un message d'erreur si l'importation échoue
-            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation du fichier : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes physiques : ' . $e->getMessage());
         }
     }
 }

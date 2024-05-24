@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('groupe_distanciels', function (Blueprint $table) {
             $table->string('codeGroupeDS')->primary();
-            $table->string('libelleGroupeDS');
-            $table->string('groupeCodeOptionFiliere');
-            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade');
+            $table->string('libelleGroupeDS')->nullable();
+            $table->UnsignedInteger('nombreGroupeContenus')->nullable();
+            $table->enum('annee',['1A','2A','3A'])->nullable();
+            $table->string('typegroupe',1)->nullable();
+            $table->foreignId('option_filieres_id')->constrained('option_filieres')->onDelete('cascade')->nullable();
+
         });
     }
 

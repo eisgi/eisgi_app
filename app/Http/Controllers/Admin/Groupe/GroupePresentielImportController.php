@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Module;
+namespace App\Http\Controllers\Admin\Groupe;
 
 use App\Http\Controllers\Controller;
+use App\Models\GroupePhysique;
 use Illuminate\Http\Request;
-use App\Models\Module;
-use PhpOffice\PhpSpreadsheet\IOFactory;
 use App\Models\OptionFiliere;
+use App\Models\GroupePresentiel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class ModuleImportController extends Controller
+class GroupePresentielImportController extends Controller
 {
     public function showForm()
     {
-        return view('admin.module.moduleimportform');
+        return view('admin.groupe.groupepresentielimportform');
     }
 
     public function import(Request $request)
@@ -55,34 +56,36 @@ class ModuleImportController extends Controller
                     $rowData[] = $sheet->getCell($col . $row)->getValue();
                 }
 
-                // Recherche de l'option filière basée sur le codeOptionFiliere
-                $optionFiliere = OptionFiliere::where('codeOptionFiliere', $rowData[6])
-                                            ->where('annee', $rowData[7])
-                                            ->first();
+                // Vérifier si la valeur de codeGroupePR est vide
+                if (!empty($rowData[0])) {
+                    // Recherche de l'option filière en fonction du libellé et de l'année
+                    $optionFiliere = OptionFiliere::where('libelleOptionFiliere', $rowData[4])
+                                                    ->where('annee', $rowData[2])
+                                                    ->first();
 
-                // Vérifier si l'option filière existe
-                if ($optionFiliere) {
-                    // Créer une nouvelle instance de Module et la sauvegarder dans la base de données
-                    Module::create([
-                        'codeModule' => $rowData[0],
-                        'libelleModule' => $rowData[1],
-                        'ordreModule' => $rowData[2],
-                        'MHT' => $rowData[3],
-                        'Coef' => $rowData[4],
-                        'EFM_Regional' => $rowData[5],
-                        'option_filieres_id' => $optionFiliere->id, // Utiliser l'ID de l'option filière
-                        'semestreModule' => $rowData[8],
+                    // Si l'option filière n'existe pas, insérer NULL
+                    $optionFiliereId = $optionFiliere ? $optionFiliere->id : null;
+                    $groupePhysique=GroupePhysique::where('codeGroupePhysique',$rowData[5])
+                                                    ->where('annee',$rowData[2])
+                                                    ->first();
+                    $groupePhysiqueId=$groupePhysique?$groupePhysique->id:null;
+                    // Créer une nouvelle instance de GroupePresentiel et la sauvegarder dans la base de données
+                    GroupePresentiel::create([
+                        'codeGroupePR' => $rowData[0],
+                        'option_filieres_id' => $optionFiliereId,
+                        'groupe_physique_id'=>$groupePhysiqueId,
+                        'libelleGroupePR' => $rowData[1],
+                        'annee' => $rowData[2],
+                        'typegroupe'=> $rowData[3],
                     ]);
-                } else {
-                    // Si l'option filière n'existe pas, vous pouvez gérer cette situation en conséquence
                 }
             }
 
             // Rediriger avec un message de succès
-            return redirect()->back()->with('success', 'Importation terminée avec succès !');
+            return redirect()->back()->with('success', 'Importation des groupes présentiels terminée avec succès !');
         } catch (\Exception $e) {
             // Rediriger avec un message d'erreur si l'importation échoue
-            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation du fichier : ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes présentiels : ' . $e->getMessage());
         }
     }
 }

@@ -15,12 +15,12 @@ class AnneeFormationSeeder extends Seeder
     {
         $datas = [
             [
-                "anneeFormation" => '2024-2025',
+                "anneeFormation" => '2024/2025',
                 "dateDebutAnneeFormation" => '2024-09-05',
                 "dateFinAnneeFormation" => '2025-07-05'
             ],
             [
-                "anneeFormation" => '2025-2026',
+                "anneeFormation" => '2025/2026',
                 "dateDebutAnneeFormation" => '2025-09-05',
                 "dateFinAnneeFormation" => '2026-01-23'
             ]

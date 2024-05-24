@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('matricule');
             $table->UnsignedBigInteger('idModule');
             $table->UnsignedBigInteger('idGroupePhysique');
-            $table->date('dateEFMPre');
-            $table->date('dateEFMReal');
+            $table->date('dateEFMPre')->nullable();
+            $table->date('dateEFMReal')->nullable();
 
             $table->unique(['semaineAnneeFormation', 'matricule', 'idModule', 'idGroupePhysique'], 'unique_affectations');
 

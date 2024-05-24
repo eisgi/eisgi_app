@@ -1,6 +1,8 @@
 
-<form action="{{ route('gestionemploi.selection_semaine') }}" method="post">
+<form action="{{ route('gestionemploi.selection_semaine') }}" method="post">
     @csrf
+    @method('POST')
+
     <label for="semaine">Choisir une semaine :</label>
     <select name="semaine_id" id="semaine">
         @foreach($semaines as $semaine)

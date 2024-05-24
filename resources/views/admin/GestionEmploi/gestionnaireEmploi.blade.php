@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-<form>
+
     <table>
         <h1>{{$semaine}}</h1>
     <tr>
@@ -84,9 +84,9 @@
     {{-- partie dist --}}
 <tr>
      <td>
-        <form action={{route("gestionemploi.remplir_select")}} method="POST">
+        <form action="" method="POST">
             @csrf
-
+                @method('POST')
                 <select name="grouperecherche">
                     <optgroup label="Groupes Distanciels">
                         @foreach ( $groupesDistanciels as $grDst )
@@ -121,7 +121,7 @@
 
 
     </table>
-</form>
+
 
 
 </body>

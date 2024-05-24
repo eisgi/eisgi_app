@@ -1,7 +1,9 @@
 
 
-<form action="{{ route('gestionemploi.selection_annee') }}" method="post">
+<form action="{{ route('gestionemploi.selection_semaine') }}" method="post">
     @csrf
+    @method('POST')
+
     <label for="annee">Choisir une année :</label>
     <select name="annee_id" id="annee">
         @foreach($annees as $annee)

@@ -28,7 +28,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::post('/authlogin',[AuthController::class,'login'])->name('auth.login');
 
 Route::view('/admin','admin.home')->name('homeAdmin');
 Route::view('/formateur','formateur.home')->name('homeFormateur');
@@ -101,7 +100,6 @@ Route::prefix('admin')->group(function () {
     Route::prefix('gestionemploi')->group(function () {
         Route::get('/', [GestionnaireEmploi::class, 'afficherGestionnaire'])->name('gestionemploi.index');
         Route::post('/selection-annee', [GestionnaireEmploi::class, 'selectionAnnee'])->name('gestionemploi.selection_annee');
-
         Route::post('/selection-semaine', [GestionnaireEmploi::class, 'selectionSemaine'])->name('gestionemploi.selection_semaine');
 
         Route::post('/afficher_form_module', [GestionnaireEmploi::class, 'remplirSelect'])->name('gestionemploi.remplir_select');

@@ -11,11 +11,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class GroupePresentielImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.groupe.groupepresentielimportform');
-    }
-
+    
     public function import(Request $request)
     {
         // Valider le fichier téléchargé
@@ -34,7 +30,7 @@ class GroupePresentielImportController extends Controller
 
         // Vérifier si l'extension est autorisée
         if (!in_array($extension, $allowedExtensions)) {
-            return redirect()->back()->with('error', 'Format de fichier non pris en charge. Les formats autorisés sont xlsx, xls et csv.');
+            return response('Le format du fichier doit être .xlsx, .xls ou .csv', 400);
         }
 
         try {
@@ -82,10 +78,10 @@ class GroupePresentielImportController extends Controller
             }
 
             // Rediriger avec un message de succès
-            return redirect()->back()->with('success', 'Importation des groupes présentiels terminée avec succès !');
+           return response('Le fichier a été importé avec succès', 200);
         } catch (\Exception $e) {
             // Rediriger avec un message d'erreur si l'importation échoue
-            return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des groupes présentiels : ' . $e->getMessage());
-        }
+return response('Le fichier n\'a pas été importé', 400)     ;  
+ }
     }
 }

@@ -10,11 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class EtablissementImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.etablissement.etablissementimportform');
-    }
-
+    
     public function import(Request $request)
 {
     // Valider le fichier téléchargé

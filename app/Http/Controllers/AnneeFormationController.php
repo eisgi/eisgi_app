@@ -10,39 +10,24 @@ use Illuminate\Http\Request;
 
 class AnneeFormationController extends Controller
 {
-    public function index()
-    {
-        return view('admin.AnneFormation.anneFormationGenerationSemaines');
-    }
+    
 
-    public function generer(Request $request)
+    public function genererSemaines(Request $request)
     {
-        // $request->validate([
-        //     'anneFormation' => 'required|string',
-        //     'dateDebut' => 'required|date',
-        //     'dateFin' => 'required|date|after_or_equal:dateDebut',
-        //     'du' => 'required|date',
-        //     'au' => 'required|date|after_or_equal:du',
-        //     'libelle_jour_ferie' => 'required|string',
-        //     'dateDebutSemestre1'=>'required|date',
-        //     'dateDebutSemestre2'=>'required|date',
-        //     'dateDebutSemestre3'=>'required|date',
-        //     'dateFinSemestre1'=>'required|date|after_or_equal:dateDebutSemestre1',
-        //     'dateFinSemestre2'=>'required|date|after_or_equal:dateDebutSemestre2',
-        //     'dateFinSemestre3'=>'required|date|after_or_equal:dateDebutSemestre3',
-        // ]);
-        $anneeFormationInput = $request->input('anneFormation');
-        $anneeFormationInputS3 = $request->input('anneFormationS3');
+        $data = $request->all();
 
-        $dateDebut = $request->input('dateDebut');
-        $dateFin = $request->input('dateFin');
-        $dateDebutS3 = $request->input('dateDebutS3');
-        $dateFinS3 = $request->input('dateFinS3');
-        $joursFeriesData = json_decode($request->input('joursFeriesData'), true);
-        $dateDebutSemestre1 = $request->input('dateDebutSemestre1');
-        $dateFinSemestre1 = $request->input('dateFinSemestre1');
-        $dateDebutSemestre2 = $request->input('dateDebutSemestre2');
-        $dateFinSemestre2 = $request->input('dateFinSemestre2');
+        $anneeFormationInput = $data['anneFormation'];
+        $anneeFormationInputS3 = $data['anneFormationS3'];
+        $dateDebut = $data['dateDebut'];
+        $dateFin = $data['dateFin'];
+        $dateDebutS3 = $data['dateDebutS3'];
+        $dateFinS3 = $data['dateFinS3'];
+        $joursFeriesData = $data['joursFeries'];
+        $dateDebutSemestre1 = $data['dateDebutSemestre1'];
+        $dateFinSemestre1 = $data['dateFinSemestre1'];
+        $dateDebutSemestre2 = $data['dateDebutSemestre2'];
+        $dateFinSemestre2 = $data['dateFinSemestre2'];
+
 
         // // // // Création de l'année de formation
         $anneeFormation = AnneeFormation::create([
@@ -114,9 +99,10 @@ class AnneeFormationController extends Controller
         }
 
         if ($anneeFormation && $semaine) {
-            return redirect()->back()->with('success', 'AnneFormation,Semaines,jours feries ajoutées avec succès.');
+            return response()->json(['message' => 'Data inserted successfully'], 200);
+
         } else {
-            return redirect()->back()->with('error', 'probleme d\'insertion.');
+            return response()->json(['message' => 'Failed to insert data'], 500);
         }
     }
 

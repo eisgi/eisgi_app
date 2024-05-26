@@ -10,10 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class OptionFiliereImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.optionfiliere.optionfiliereimportform');
-    }
+   
 
     public function import(Request $request)
         {

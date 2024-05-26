@@ -10,10 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class GroupePhysiqueImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.groupe.groupephysiqueimportform');
-    }
+   
 
     public function import(Request $request)
     {

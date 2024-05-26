@@ -9,10 +9,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ComplexeImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.complexe.complexeimportform');
-    }
+    
 
     public function import(Request $request)
     {

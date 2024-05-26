@@ -9,10 +9,6 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class SalleImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.salle.salleimportform');
-    }
 
     public function import(Request $request)
     {

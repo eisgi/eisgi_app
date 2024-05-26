@@ -9,11 +9,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ImportFiliereController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.filiere.filiereimportform');
-    }
-
+   
     public function import(Request $request)
     {
         // Validate the uploaded file

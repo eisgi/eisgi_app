@@ -13,10 +13,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class AffectationFormodgrImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.affectation.affectationformodgrimportform');
-    }
+   
 
     public function import(Request $request)
 {
@@ -31,7 +28,7 @@ class AffectationFormodgrImportController extends Controller
     $allowedExtensions = ['xlsx', 'xls', 'csv'];
 
     if (!in_array($extension, $allowedExtensions)) {
-        return redirect()->back()->with('error', 'Format de fichier non pris en charge. Les formats autorisés sont xlsx, xls et csv.');
+return response('Le format de fichier doit être .xlsx, .xls ou .csv', 400);
     }
 
     try {
@@ -88,10 +85,8 @@ class AffectationFormodgrImportController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Importation des affectations pour le module terminée avec succès !');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Une erreur s\'est produite lors de l\'importation des affectations : ' . $e->getMessage());
-    }
+return response('Importation reussie', 200);    } catch (\Exception $e) {
+return response($e->getMessage(), 400);    }
 }
 
 }

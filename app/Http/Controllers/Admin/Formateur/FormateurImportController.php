@@ -11,10 +11,7 @@ use Carbon\Carbon;
 
 class FormateurImportController extends Controller
 {
-    public function showForm()
-    {
-        return view('admin.formateur.formateurimportform');
-    }
+   
 
     public function import(Request $request)
     {

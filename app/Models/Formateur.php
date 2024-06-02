@@ -38,3 +38,4 @@ class Formateur extends Model
         return $this->belongsTo(Etablissement::class, 'idEtablissement');
     }
 }
+

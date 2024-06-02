@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 //importation
@@ -102,7 +102,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/selection-annee', [GestionnaireEmploi::class, 'selectionAnnee'])->name('gestionemploi.selection_annee');
         Route::post('/selection-semaine', [GestionnaireEmploi::class, 'selectionSemaine'])->name('gestionemploi.selection_semaine');
 
-        Route::post('/afficher_form_module', [GestionnaireEmploi::class, 'remplirSelect'])->name('gestionemploi.remplir_select');
+        Route::post('/afficher_form_mod', [GestionnaireEmploi::class, 'remplirSelect'])->name('gestionemploi.remplir_select');
     });
     });
 

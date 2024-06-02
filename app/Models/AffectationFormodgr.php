@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Formateur;
+
 
 class AffectationFormodgr extends Model
 {
@@ -19,12 +21,12 @@ class AffectationFormodgr extends Model
         'dateEFMReal',
     ];
 
-    public function formateur()
+    public function formateurs()
     {
-        return $this->belongsTo(Formateur::class, 'matricule', 'matricule');
+        return $this->belongsTo(Formateur::class , 'matricule', 'matricule');
     }
 
-    public function module()
+    public function modules()
     {
         return $this->belongsTo(Module::class, 'idModule', 'id');
     }

@@ -21,9 +21,9 @@ class JourSeeder extends Seeder
             "Jeudi",
             "Vendredi",
             "Samedi",
-            "Dimanche"
+
         ];
-        
+
         // Récupérer toutes les semaines existantes
         $semaines = Semaine::all();
 
@@ -34,11 +34,13 @@ class JourSeeder extends Seeder
                 $jour = new Jour();
                 $jour->libelle = $nomJour;
                 $jour->is_feriee = 0; // Vous pouvez définir les jours fériés si nécessaire
-                $jour->id_Semaine = $semaine->id; // Associer chaque jour à la semaine
+                $jour->id_Semaine = $semaine->id;
 
-                // Enregistrer le jour dans la base de données
+                $jour->date_jours = date('Y-m-d', strtotime($semaine->date_debut . ' + ' . $index . ' day'));
+
                 $jour->save();
             }
         }
+
     }
 }
